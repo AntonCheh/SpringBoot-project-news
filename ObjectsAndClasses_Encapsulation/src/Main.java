@@ -15,5 +15,9 @@ public class Main {
             elevator.moveDown();
             elevator.getCurrentFloor();
         }
+
+
+
+
     }
 }

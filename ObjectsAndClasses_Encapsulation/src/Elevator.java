@@ -30,3 +30,17 @@ public class Elevator {
 
         return false;
     }
+
+    public boolean move(int floor) {
+        this.currentFloor = floor;
+        if (floor >= this.minFloor) {
+            System.out.println("Лифт едет на " + floor + " этаж");
+        }
+
+        if (floor == 1) {
+            System.out.println("Вы на этом этаже, введите другой этаж");
+        }
+
+        return false;
+    }
+}
