@@ -1,7 +1,7 @@
 public class Elevator {
-    public int currentFloor = 1;
-    public int minFloor;
-    public int maxFloor;
+    private int currentFloor = 1;
+    private int minFloor;
+    private int maxFloor;
 
     public Elevator(int minFloor, int maxFloor) {
         this.minFloor = minFloor;
@@ -22,13 +22,14 @@ public class Elevator {
         }
     }
 
-    public boolean moveUp() {
+    public int moveUp() {
         ++this.currentFloor;
         if (this.currentFloor > this.maxFloor) {
             System.out.println("Ошибка: этаж отсутствует, верхний этаж: " + this.maxFloor);
+            return 1;
+        } else {
+            return this.currentFloor;
         }
-
-        return false;
     }
 
     public boolean move(int floor) {

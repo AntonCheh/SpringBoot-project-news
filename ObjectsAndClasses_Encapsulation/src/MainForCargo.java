@@ -1,16 +1,16 @@
 public class MainForCargo {
     public static void main(String[] args) {
-        Cargo cargo = new Cargo(
+        Cargo cargo = new Cargo( 45*4*11,
                 20,
                 "Russia",
                 false,
                 true,
                 2424);
-        Dimensions dimensions = new Dimensions(10*10*15);
+        Dimensions dimensions = new Dimensions(10,15,20);
         cargo.getDeliveryAddress();
         System.out.println("Адрес доставки: " + cargo.getDeliveryAddress());
         cargo.getDimension();
-        System.out.println("Размер груза: " + dimensions.getVolume() + " куб.м.");
+        System.out.println("Размер груза: " + cargo.getDimensions() + " куб.м.");
         cargo.getWeight();
         System.out.println("Вес груза: " + cargo.getWeight() + " кг.");
         cargo.isFragile();

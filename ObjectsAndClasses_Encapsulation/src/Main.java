@@ -1,9 +1,7 @@
 import java.util.Scanner;
-
 public class Main {
     public Main() {
     }
-
     public static void main(String[] args) {
         Elevator elevator = new Elevator(-3, 26);
 
@@ -15,9 +13,5 @@ public class Main {
             elevator.moveDown();
             elevator.getCurrentFloor();
         }
-
-
-
-
     }
 }

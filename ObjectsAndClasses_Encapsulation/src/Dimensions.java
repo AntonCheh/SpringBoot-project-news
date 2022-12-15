@@ -1,19 +1,31 @@
 public class Dimensions {  // габариты
-    private int width; // ширина
-    private int height;  // высота
-    private int length;  // длина
-    private int volume = width * height * length;
 
-    public Dimensions(int volume) {
+    private final int width; // ширина
+    private final int height;  // высота
+    private final int length;  // длина
 
-        this.volume = volume;
+    public Dimensions volume (int width, int height, int length) {
+        return new Dimensions (width, height, length);
     }
 
-    public int getVolume() {
-
-        return volume;
+    public int getWidth() {
+        return width;
     }
 
-}
+    public int getHeight() {
+        return height;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public Dimensions(int width, int height, int length) {
+        this.width = width;
+        this.height = height;
+        this.length = length;
+    }
+
+    }
 
 
