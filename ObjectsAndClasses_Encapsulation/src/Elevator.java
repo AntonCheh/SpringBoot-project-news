@@ -1,5 +1,5 @@
 public class Elevator {
-    private int currentFloor = 1;
+    private int currentFloor = 0;
     private int minFloor;
     private int maxFloor;
 
@@ -8,40 +8,28 @@ public class Elevator {
         this.maxFloor = maxFloor;
     }
 
-    public int getCurrentFloor() {
-        return this.currentFloor;
-    }
-
     public int moveDown() {
-        --this.currentFloor;
-        if (this.currentFloor < this.minFloor) {
-            System.out.println("Ошибка: этаж отсутствует, нижний этаж: " + this.minFloor);
-            return 1;
-        } else {
-            return this.currentFloor;
-        }
+        currentFloor = currentFloor + 1;
+        return currentFloor;
     }
 
     public int moveUp() {
-        ++this.currentFloor;
-        if (this.currentFloor > this.maxFloor) {
-            System.out.println("Ошибка: этаж отсутствует, верхний этаж: " + this.maxFloor);
-            return 1;
-        } else {
-            return this.currentFloor;
-        }
+        currentFloor = currentFloor - 1;
+        return currentFloor;
     }
 
     public boolean move(int floor) {
-        this.currentFloor = floor;
-        if (floor >= this.minFloor) {
-            System.out.println("Лифт едет на " + floor + " этаж");
+        if (floor < minFloor || floor > maxFloor) {
+            System.out.println("Error");
+        } else if (floor > currentFloor)  {
+            System.out.println("going to level: " + moveUp());
+        } else if (floor < currentFloor){
+            System.out.println(moveDown());
+        } else {
+            System.out.println("current level");
         }
-
-        if (floor == 1) {
-            System.out.println("Вы на этом этаже, введите другой этаж");
-        }
-
         return false;
     }
+
+
 }

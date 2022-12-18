@@ -1,14 +1,19 @@
 public class Cargo {
-
-    private final Dimensions dimensions = new Dimensions(10,15,20); // габариты
+    private final Dimensions dimensions; // габариты
     private final int weight; // вес
     private final String deliveryAddress; // адрес доставки
     private final boolean property; // свойства
     private final boolean fragile; // хрупкий
     private final int registerNumber; // регистрационный номер
 
-    public final Dimensions getDimensions() {
-        return dimensions;
+
+    public Cargo(Dimensions dimensions, int weight, String deliveryAddress, boolean property, boolean fragile, int registerNumber) {
+        this.dimensions = dimensions;
+        this.weight = weight;
+        this.deliveryAddress = deliveryAddress;
+        this.property = property;
+        this.fragile = fragile;
+        this.registerNumber = registerNumber;
     }
 
     public Cargo setDimensions(Dimensions dimensions) {
@@ -35,13 +40,8 @@ public class Cargo {
         return new Cargo(dimensions, weight, deliveryAddress, property, fragile, registerNumber);
     }
 
-    public Cargo(Dimensions dimensions, int weight, String deliveryAddress, boolean property, boolean fragile, int registerNumber) {
-        this.dimensions = dimensions;
-        this.weight = weight;
-        this.deliveryAddress = deliveryAddress;
-        this.property = property;
-        this.fragile = fragile;
-        this.registerNumber = registerNumber;
+    public Dimensions getDimensions() {
+        return dimensions;
     }
     public int getWeight() {
         return weight;
@@ -49,7 +49,7 @@ public class Cargo {
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
-    public boolean isProperty(String name) {
+    public boolean isProperty() {
         return property;
     }
     public boolean isFragile() {
@@ -58,8 +58,4 @@ public class Cargo {
     public int getRegisterNumber() {
         return registerNumber;
     }
-    public int getDimension() {
-        return getDimension();
-    }
-
 }
