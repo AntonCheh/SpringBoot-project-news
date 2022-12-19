@@ -9,21 +9,24 @@ public class Elevator {
     }
 
     public int moveDown() {
-        currentFloor = currentFloor + 1;
+        currentFloor = currentFloor - 1;
         return currentFloor;
     }
 
     public int moveUp() {
-        currentFloor = currentFloor - 1;
+        currentFloor = currentFloor + 1;
         return currentFloor;
     }
 
     public boolean move(int floor) {
         if (floor < minFloor || floor > maxFloor) {
             System.out.println("Error");
-        } else if (floor > currentFloor)  {
-            System.out.println("going to level: " + moveUp());
+        } else if (floor > currentFloor) {
+            while (floor > currentFloor) {
+                System.out.println("going to level: " + moveUp());
+            }
         } else if (floor < currentFloor){
+            while (floor < currentFloor)
             System.out.println(moveDown());
         } else {
             System.out.println("current level");
