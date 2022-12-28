@@ -2,15 +2,18 @@ public class Basket {
 
     private static int count = 0;
     private String items = "";
-    private int totalPrice = 0;
+    private static int totalPrice = 0;
     private int limit;
     private double totalWeight = 0;
 
+    private static int totalCount = 0;
+    private static int totalCostItems = 0;
 
     public Basket() {
         increaseCount(1);
         items = "Список товаров:" + "\n";
         this.limit = 1000000;
+
     }
 
     public Basket(int limit) {
@@ -27,9 +30,20 @@ public class Basket {
     // this.items = this.items + items;
     //  this.totalPrice = totalPrice; }
 
-
     public static void increaseCount(int count) {
         Basket.count = Basket.count + count;
+    }
+
+    public static int getTotalCount() {
+        return count;
+    }
+
+    public static double getAveragePriceAllBaskets() {
+        return (double) totalPrice / count;
+    }
+
+    public static double getAveragePriceBasket() {
+        return (double) totalCount / count;
     }
 
     // public void add(String name, int price) { add(name, price, 1); }
@@ -54,6 +68,7 @@ public class Basket {
         totalPrice = totalPrice + count * price;
         totalWeight = totalWeight + weight;
 
+
     }
 
     public void clear() {
@@ -72,9 +87,6 @@ public class Basket {
         return totalWeight;
     }
 
-    public static int getCount() {
-        return count;
-    }
 
 
     public boolean contains(String name) {
