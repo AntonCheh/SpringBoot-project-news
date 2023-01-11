@@ -1,25 +1,41 @@
-public class Basket {
+public class Basket{
 
     private static int count = 0;
     private String items = "";
     private static int totalPrice = 0;
     private int limit;
     private double totalWeight = 0;
+                                                 // добавил две статические переменные
+    private static int totalPriceBasket;     //    - обшая стоимость всех товаров
+    private static int totalCountInBaskets;     //  - общее количество всех товаров во всех корзинах
 
-    private static int totalCount = 0;
-    private static int totalCostItems = 0;
 
-    public Basket() {
+
+    public Basket(int limit) {
         increaseCount(1);
-        items = "Список товаров:" + "\n";
+        items = "Список товаров:";
         this.limit = 1000000;
 
     }
 
-    public Basket(int limit) {
-        this();
-        this.limit = limit;
+    public static void totalPriceBasket () {
+        totalPriceBasket = totalPriceBasket + 1;
     }
+
+    public static void totalCountInBaskets () {
+        totalCountInBaskets = totalCountInBaskets + 1;
+    }
+
+
+    public static double getAveragePrice() {
+
+        return (double) totalPriceBasket / totalCountInBaskets;
+    }
+
+    public static double getAveragePriceBasket() {
+        return (double) totalPriceBasket / Basket.count;
+    }
+
 
     // public Basket(int limit) {
     // this();
@@ -31,19 +47,13 @@ public class Basket {
     //  this.totalPrice = totalPrice; }
 
     public static void increaseCount(int count) {
+
         Basket.count = Basket.count + count;
     }
 
     public static int getTotalCount() {
+
         return count;
-    }
-
-    public static double getAveragePriceAllBaskets() {
-        return (double) totalPrice / count;
-    }
-
-    public static double getAveragePriceBasket() {
-        return (double) totalCount / count;
     }
 
     // public void add(String name, int price) { add(name, price, 1); }
@@ -64,7 +74,7 @@ public class Basket {
         }
 
         items = items + "\n" + name + " " +
-                count + " шт. - " + price + " руб.," + " весом" + " " + weight + " кг" + "\n";
+                count + " шт. - " + price + " руб.," + " весом" + " " + weight + " кг";
         totalPrice = totalPrice + count * price;
         totalWeight = totalWeight + weight;
 
