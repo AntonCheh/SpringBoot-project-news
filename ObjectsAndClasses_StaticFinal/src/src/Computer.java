@@ -1,15 +1,24 @@
 public class Computer {
 
-    private final String ram;
-    private final String storageOfInformation;
-    private final String monitor;
-    private final String keyboard;
-    private final String processor;
+    private final Ram ram;
+    private final StorageOfInformation storageOfInformation;
+    private final Monitor monitor;
+    private final Keyboard keyboard;
+    private final Processor processor;
     private final String vendor;
     private final String name;
 
-    public Computer(String vendor, String name, String ram, String storageOfInformation, String monitor,
-                    String keyboard, String processor) {
+    public int totalWeight;
+
+public void weight () {
+    this.totalWeight = this.totalWeight + totalWeight;
+}
+
+    public int getTotalWeight() {
+        return totalWeight;
+    }
+
+    public Computer(Processor processor, Ram ram, StorageOfInformation storageOfInformation, Monitor monitor, Keyboard keyboard, String vendor, String name) {
         this.ram = ram;
         this.storageOfInformation = storageOfInformation;
         this.monitor = monitor;
@@ -20,59 +29,70 @@ public class Computer {
     }
 
     public Computer setVendor (String vendor) {
+        return new Computer( processor, ram, storageOfInformation,
+                monitor, keyboard, vendor, name);
+    }
+
+    public Computer setName(String name) {
         return new Computer(processor, ram, storageOfInformation,
                 monitor, keyboard, vendor, name);
     }
 
-    public Computer setName(String ram) {
+    public Computer setProccessor(Processor processor) {
         return new Computer(processor, ram, storageOfInformation,
                 monitor, keyboard, vendor, name);
     }
 
-
-    public Computer setProccessor(String processor) {
+    public Computer setRam(Ram ram) {
         return new Computer(processor, ram, storageOfInformation,
                 monitor, keyboard, vendor, name);
     }
 
-    public Computer setRam(String ram) {
+    public Computer setStorageOfInformation(StorageOfInformation storageOfInformation) {
         return new Computer(processor, ram, storageOfInformation,
                 monitor, keyboard, vendor, name);
     }
 
-    public Computer setStorageOfInformation(String storageOfInformation) {
+    public Computer setMonitor(Monitor monitor) {
         return new Computer(processor, ram, storageOfInformation,
                 monitor, keyboard, vendor, name);
     }
 
-    public Computer setMonitor(String monitor) {
+    public Computer setKeyboard(Keyboard keyboard) {
         return new Computer(processor, ram, storageOfInformation,
                 monitor, keyboard, vendor, name);
     }
 
-    public Computer setKeyboard(String keyboard) {
-        return new Computer(processor, ram, storageOfInformation,
-                monitor, keyboard, vendor, name);
-    }
-
-    public String getProccessor() {
+    public Processor getProccessor() {
         return processor;
     }
 
-    public String getRam() {
+    public Ram getRam() {
         return ram;
     }
 
-    public String getStorageOfInformation() {
+    public StorageOfInformation getStorageOfInformation() {
         return storageOfInformation;
     }
 
-    public String getMonitor() {
+    public Monitor getMonitor() {
         return monitor;
     }
 
-    public String getKeyboard() {
+    public Keyboard getKeyboard() {
         return keyboard;
     }
 
+    public void add() {
+        totalWeight = totalWeight + getTotalWeight();
+
+    }
+
+    public String toString() {
+        return "Computer:" + '\'' + "Ram: " + getRam() + "Storage of information: " + getStorageOfInformation() + "Processor: " + getProccessor() +
+                "Monitor: " + getMonitor() + "Keyboard: " + getKeyboard();
+
+    }
 }
+
+
