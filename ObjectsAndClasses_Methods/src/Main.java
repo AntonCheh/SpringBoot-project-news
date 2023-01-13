@@ -6,8 +6,10 @@ public class Main {
 
         Basket antonBasket = new Basket(10000);
         Basket iraBasket = new Basket(150000);
+        Basket anton2Basket = new Basket(100000);
 
-        antonBasket.add("Молоко", 40, 20, 5.4);
+
+        antonBasket.add("Молоко", 40, 20, 2.4);
         antonBasket.add("Яблоки", 25, 10, 2);
         antonBasket.add("Мука", 46, 1, 1);
         antonBasket.add("Яйца", 88, 10, 0.5);
@@ -25,6 +27,16 @@ public class Main {
         iraBasket.print("Корзина Иры");
         System.out.println("\n" + "Общая стоимость: " + iraBasket.getTotalPrice() + " руб.");
         System.out.println("Общий вес: " + iraBasket.getTotalWeight() + " кг." + "\n");
+
+        System.out.println();
+        anton2Basket.add("Дыня", 90, 1, 1);
+        anton2Basket.add("Изюм", 80, 1, 1);
+        anton2Basket.add("Персик", 120, 1, 2);
+        anton2Basket.add("Бананы", 100, 1, 2);
+        anton2Basket.print ("Корзина Антона2");
+        System.out.println("\n" + "Общая стоимость: " + iraBasket.getTotalPrice() + " руб.");
+        System.out.println("Общий вес: " + iraBasket.getTotalWeight() + " кг." + "\n");
+
 
         System.out.println("Итоги по заданию:");
         System.out.println("Средняя стоимость одной корзины: " + Basket.getAveragePriceBasket());
