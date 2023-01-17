@@ -1,5 +1,6 @@
 public class Computer {
 
+
     private final Ram ram;
     private final StorageOfInformation storageOfInformation;
     private final Monitor monitor;
@@ -8,17 +9,9 @@ public class Computer {
     private final String vendor;
     private final String name;
 
-    public int totalWeight;
 
-public void weight () {
-    this.totalWeight = this.totalWeight + totalWeight;
-}
-
-    public int getTotalWeight() {
-        return totalWeight;
-    }
-
-    public Computer(Processor processor, Ram ram, StorageOfInformation storageOfInformation, Monitor monitor, Keyboard keyboard, String vendor, String name) {
+    public Computer(Processor processor, Ram ram, StorageOfInformation storageOfInformation,
+                    Monitor monitor, Keyboard keyboard, String vendor, String name) {
         this.ram = ram;
         this.storageOfInformation = storageOfInformation;
         this.monitor = monitor;
@@ -27,6 +20,21 @@ public void weight () {
         this.vendor = vendor;
         this.name = name;
     }
+
+    public int totalWeight;
+
+    public void totalWeight() {
+        this.totalWeight = this.totalWeight + Keyboard.getWeight() + Monitor.getWeight()+ Processor.getWeight()
+                + Ram.getWeight() + StorageOfInformation.getWeight();
+    }
+
+   public int getTotalWeight() {
+
+    return this.totalWeight;
+    }
+
+
+
 
     public Computer setVendor (String vendor) {
         return new Computer( processor, ram, storageOfInformation,
@@ -89,10 +97,13 @@ public void weight () {
     }
 
     public String toString() {
-        return "Computer:" + '\'' + "Ram: " + getRam() + "Storage of information: " + getStorageOfInformation() + "Processor: " + getProccessor() +
+        return "Computer:" + '\'' + "Ram: " +  "Storage of information: " + getStorageOfInformation() + "Processor: " + getProccessor() +
                 "Monitor: " + getMonitor() + "Keyboard: " + getKeyboard();
 
     }
+
+
+
 }
 
 

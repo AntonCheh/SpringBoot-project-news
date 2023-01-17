@@ -3,7 +3,7 @@ public final class Processor {
         private final int frequency; // частота
         private final int cores; // ядра
         private final String manufacturer; // производитель
-        private final int weight;
+        private static int weight;
 
         public Processor(int frequency, int cores, String manufacturer, int weight) {
         this.frequency = frequency;
@@ -11,6 +11,8 @@ public final class Processor {
         this.manufacturer = manufacturer;
         this.weight = weight;
     }
-
+        public static int getWeight() {
+                return weight;
+        }
 
 }

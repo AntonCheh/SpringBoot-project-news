@@ -7,10 +7,10 @@ Computer computer = new Computer(new Processor(1000, 2, "IBM", 100),
         new Keyboard("wireless", true, 100), "Samsung", "Max 2000");
         computer.toString();
 
-computer.getTotalWeight();
+        computer.getTotalWeight();
 
 computer.add();
-        System.out.println("Общий вес компьютера: " + computer.getTotalWeight());
+        System.out.println("Общий вес компьютера: " + Computer.getTotalWeight());
 
 
 
