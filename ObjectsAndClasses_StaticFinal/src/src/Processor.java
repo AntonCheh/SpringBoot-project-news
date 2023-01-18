@@ -15,4 +15,9 @@ public final class Processor {
                 return weight;
         }
 
+    public String toString() {
+        return "Processor: " + this.frequency + " ; " +  this.cores + " ; " + this.manufacturer + " ; "
+                + this.weight;
+    }
+
 }

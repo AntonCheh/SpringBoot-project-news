@@ -14,6 +14,6 @@ public final class Keyboard {
     }
 
     public String toString() {
-        return "Keyboard:";
+        return "Keyboard: " + this.type + " ; " +  this.illuninaton + " ; " + this.weight;
     }
 }

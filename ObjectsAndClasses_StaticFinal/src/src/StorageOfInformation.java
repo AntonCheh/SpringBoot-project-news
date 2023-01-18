@@ -11,4 +11,9 @@ public final class StorageOfInformation {
     public static int getWeight() {
         return weight;
     }
+
+    public String toString() {
+        return "Storage of information: " + this.typeOfStorage + " ; " +  this.volumeOfMemory + " ; "
+                + this.weight;
+    }
 }

@@ -14,4 +14,7 @@ public final class Monitor {
         return weight;
     }
 
+    public String toString() {
+        return "Monitor: " + this.diagonal + " ; " +  this.typeOfMatrix + " ; " + this.weight;
+    }
 }

@@ -12,4 +12,8 @@ public final class Ram {
     public static int getWeight() {
         return weightOfRam;
     }
+
+    public String toString() {
+        return "Ram: " + this.typeOfRam + " ; " +  this.volumeOfRam + " ; " + this.weightOfRam;
+    }
 }

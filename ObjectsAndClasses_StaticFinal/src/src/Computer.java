@@ -21,23 +21,21 @@ public class Computer {
         this.name = name;
     }
 
-    public int totalWeight;
 
-    public void totalWeight() {
-        this.totalWeight = this.totalWeight + Keyboard.getWeight() + Monitor.getWeight()+ Processor.getWeight()
+    public static int totalWeight;
+
+    public static void totalWeight() {
+        Computer.totalWeight = totalWeight + Keyboard.getWeight() + Monitor.getWeight() + Processor.getWeight()
                 + Ram.getWeight() + StorageOfInformation.getWeight();
     }
 
-   public int getTotalWeight() {
-
-    return this.totalWeight;
+    public static int getTotalWeight() {
+        return totalWeight;
     }
 
 
-
-
-    public Computer setVendor (String vendor) {
-        return new Computer( processor, ram, storageOfInformation,
+    public Computer setVendor(String vendor) {
+        return new Computer(processor, ram, storageOfInformation,
                 monitor, keyboard, vendor, name);
     }
 
@@ -91,17 +89,14 @@ public class Computer {
         return keyboard;
     }
 
-    public void add() {
-        totalWeight = totalWeight + getTotalWeight();
-
-    }
-
     public String toString() {
-        return "Computer:" + '\'' + "Ram: " +  "Storage of information: " + getStorageOfInformation() + "Processor: " + getProccessor() +
-                "Monitor: " + getMonitor() + "Keyboard: " + getKeyboard();
+        return "Информация о компьютере:" + "\n" +  keyboard.toString()
+                + "\n" + monitor.toString()
+                + "\n" + processor.toString()
+                + "\n" + ram.toString()
+                + "\n" + storageOfInformation.toString();
 
     }
-
 
 
 }
