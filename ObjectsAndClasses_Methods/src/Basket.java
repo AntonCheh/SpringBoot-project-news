@@ -4,10 +4,12 @@ public class Basket {
     private String items = "";
     private static int totalPrice = 0;
     private int limit;
-    private double totalWeight = 0;
-    // добавил две статические переменные
+    private static double totalWeight = 0;
+
+        // добавил две статические переменные
     private static int totalPriceBasket;     //    - обшая стоимость всех товаров
     private static int totalCountInBaskets;     //  - общее количество всех товаров во всех корзинах
+    private static double totalWeightBaskets;  // общий вес всех корзин
 
     public Basket(int limit) {
         increaseCount(1);
@@ -15,14 +17,18 @@ public class Basket {
         this.limit = 1000000;
     }
 
-    public static void totalPriceBasket() {
+    public static void totalPriceBasket(int price) {
 
-        totalPriceBasket = totalPriceBasket + totalPrice * Basket.count;
+        totalPriceBasket = totalPriceBasket + price * count;
     }
 
-    public static void totalCountInBaskets() {
+    public static void totalCountInBaskets(int count) {
 
         totalCountInBaskets = totalCountInBaskets + count * Basket.count;
+    }
+
+    public static void totalWeightBaskets (double weight) {
+        totalWeightBaskets = totalWeightBaskets + weight;
     }
 
     public static double getAveragePrice() {
@@ -33,6 +39,10 @@ public class Basket {
     public static double getAveragePriceBasket() {
 
         return (double) totalPriceBasket / Basket.count;
+    }
+
+    public static double getTotalWeightBaskets () {
+        return totalWeightBaskets;
     }
 
 
@@ -76,9 +86,11 @@ public class Basket {
                 count + " шт. - " + price + " руб.," + " весом" + " " + weight + " кг";
         totalPrice = totalPrice + count * price;
         totalWeight = totalWeight + weight;
-        Basket.totalCountInBaskets();
-        Basket.totalPriceBasket();
+        Basket.totalPriceBasket(price);
+        Basket.totalCountInBaskets(count);
+        Basket.totalWeightBaskets(weight);
     }
+
 
     public void clear() {
         items = "";
@@ -89,15 +101,18 @@ public class Basket {
     }
 
     public int getTotalPrice() {
+
         return totalPrice;
     }
 
     public double getTotalWeight() {
+
         return totalWeight;
     }
 
 
     public boolean contains(String name) {
+
         return items.contains(name);
     }
 
