@@ -1,19 +1,22 @@
 public final class Keyboard {
     private final String type;
-    private final boolean illuninaton;
+    private final Illumination illumination;
+
     private static int weight;
 
     public static int getWeight() {
         return weight;
     }
 
-    public Keyboard(String type, boolean illuninaton, int weight) {
+    public Keyboard(String type, Illumination illumination1, int weight) {
         this.type = type;
-        this.illuninaton = illuninaton;
+        this.illumination = illumination1;
         this.weight = weight;
     }
 
+    
+
     public String toString() {
-        return "Keyboard: " + this.type + " ; " +  this.illuninaton + " ; " + this.weight;
+        return "Keyboard: " + this.type + " ; " + this.illumination  + " ; " + this.weight;
     }
 }

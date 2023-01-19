@@ -90,11 +90,14 @@ public class Computer {
     }
 
     public String toString() {
-        return "Информация о компьютере:" + "\n" +  keyboard.toString()
-                + "\n" + monitor.toString()
-                + "\n" + processor.toString()
-                + "\n" + ram.toString()
-                + "\n" + storageOfInformation.toString();
+        return "Информация о компьютере:"
+                + "\n" + "Марка компьютера: " + this.vendor
+                + "\n" + "Название компьютера: " + this.name
+                + "\n" +  keyboard
+                + "\n" + monitor
+                + "\n" + processor
+                + "\n" + ram
+                + "\n" + storageOfInformation;
 
     }
 
