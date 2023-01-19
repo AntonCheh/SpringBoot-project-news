@@ -2,9 +2,9 @@ public class Basket {
 
     private static int count = 0;
     private String items = "";
-    private static int totalPrice = 0;
+    private int totalPrice = 0;
     private int limit;
-    private static double totalWeight = 0;
+    private double totalWeight = 0;
 
         // добавил две статические переменные
     private static int totalPriceBasket;     //    - обшая стоимость всех товаров
