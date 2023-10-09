@@ -1,29 +1,38 @@
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public abstract class Company {
+public class Company {
 
-    protected int salaryFix = 100_000;
-    protected int bonus = 0;
+    protected List<Employee> employees = new ArrayList<>();
+    private double salary;
 
-    protected  void hire (Employee employee){
+    public void hire(Employee employee) {
+        employees.add(employee);
 
     }
-
-    protected void hireAll (Collection <Employee> employes) {
+    public void hireAll(Collection<Employee> employees) {
+        this.employees.addAll(employees);
     }
-
-    protected void fire (Employee employee) {
+    public void fire(Employee employee) {
+        employees.remove(employee);
     }
-
-    protected void getIncome () {
+    public double getSalary() {
+        return salary;
     }
-
-   public List<Employee> getTopSalaryStaff(int count) {
-        return null;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
-
+    public List<Employee> getTopSalaryStaff(int count) {
+        List<Employee> topSalaryStaff = new ArrayList<>(employees); // Создаем копию списка сотрудников
+        topSalaryStaff.sort((e1, e2) -> Double.compare(e2.getMonthSalary(), e1.getMonthSalary())); // Сортируем список
+        return topSalaryStaff.subList(0, Math.min(count, topSalaryStaff.size())); // Получаем подсписок
+    }
     public List<Employee> getLowestSalaryStaff(int count) {
-        return null;
+        List<Employee> lowestSalaryStaff = new ArrayList<>(employees); // Создаем копию списка сотрудников
+        lowestSalaryStaff.sort(Comparator.comparingDouble(Employee::getMonthSalary)); // Сортируем список
+        return lowestSalaryStaff.subList(0, Math.min(count, lowestSalaryStaff.size())); // Получаем подсписок
     }
 }

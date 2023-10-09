@@ -1,7 +1,11 @@
-public class Operator extends Company implements Employee {
+public class Operator implements Employee {
+    private final double fixedSalary;
 
+    public Operator(double fixedSalary) {
+        this.fixedSalary = fixedSalary;
+    }
     @Override
     public double getMonthSalary() {
-        return Employee.super.getMonthSalary(salaryFix);
+        return fixedSalary;
     }
 }
