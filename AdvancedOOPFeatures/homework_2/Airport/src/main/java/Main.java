@@ -13,6 +13,21 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
+        Airport airport = Airport.getInstance();
+        List<Flight> departingFlights = findPlanesLeavingInTheNextTwoHours(airport);
+
+        if (departingFlights.isEmpty()) {
+            System.out.println("Нет рейсов, вылетающих в ближайшие два часа.");
+        } else {
+            System.out.println("Рейсы, вылетающие в ближайшие два часа:");
+            for (Flight flight : departingFlights) {
+                System.out.println("Тип: " + flight.getType());
+                System.out.println("Код: " + flight.getCode());
+                System.out.println("Дата: " + flight.getDate());
+                System.out.println("Самолет: " + flight.getAircraft());
+                System.out.println();
+            }
+        }
 
     }
 
@@ -20,13 +35,13 @@ public class Main {
        Date timeNow = new Date();
         Date twoHoursLate = calculateTwoHoursAfter (timeNow);
 
-        List<Flight> departingFlights = airport.getAllAircrafts().stream()
-                .filter(flight -> flight.getType() == Flight.Type.DEPARTURE).
-                filter(flight -> flight.getDate().before(twoHoursLate))
+        List<Flight> departingFlights = airport.getTerminals().stream()
+                .flatMap(terminal -> terminal.getFlights().stream()) // Получаем все рейсы из всех терминалов
+                .filter(flight -> flight.getType() == Flight.Type.DEPARTURE) // Фильтруем только вылеты
+                .filter(flight -> flight.getDate().before(twoHoursLate)) // Фильтруем рейсы в ближайшие два часа
                 .collect(Collectors.toList());
 
 
-        //TODO Метод должден вернуть список рейсов вылетающих в ближайшие два часа.
         return departingFlights;
     }
 
@@ -36,8 +51,6 @@ public class Main {
 
         search.add(Calendar.HOUR_OF_DAY, 2);
 
-        Date twoHoursFromNow = search.getTime ();
-
-        return twoHoursFromNow;
+        return search.getTime ();
         }
     }
