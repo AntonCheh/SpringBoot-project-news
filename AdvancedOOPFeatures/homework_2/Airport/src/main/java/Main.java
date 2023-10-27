@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Airport airport = Airport.getInstance();
@@ -38,8 +39,7 @@ public class Main {
         List<Flight> departingFlights = airport.getTerminals().stream()
                 .flatMap(terminal -> terminal.getFlights().stream()) // Получаем все рейсы из всех терминалов
                 .filter(flight -> flight.getType() == Flight.Type.DEPARTURE) // Фильтруем только вылеты
-                .filter(flight -> flight.getDate().before(twoHoursLate)) // Фильтруем рейсы в ближайшие два часа
-                .collect(Collectors.toList());
+                .filter(flight -> flight.getDate().after(timeNow) && flight.getDate().before(twoHoursLate)).collect(Collectors.toList());
 
 
         return departingFlights;
