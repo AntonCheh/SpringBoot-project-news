@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp" packages="">
+<Appenders>
+    <!-- Appender for queries.log -->
+    <RollingFile name="QueriesFile" fileName="logs/queries.log"
+                 filePattern="logs/queries-%d{yyyy-MM-dd}.log.gz">
+        <PatternLayout>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+        </PatternLayout>
+        <Policies>
+            <TimeBasedTriggeringPolicy />
+        </Policies>
+    </RollingFile>
+
+    <!-- Appender for errors.log -->
+    <RollingFile name="ErrorsFile" fileName="logs/errors.log"
+                 filePattern="logs/errors-%d{yyyy-MM-dd}.log.gz">
+        <PatternLayout>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+        </PatternLayout>
+        <Policies>
+            <TimeBasedTriggeringPolicy />
+        </Policies>
+    </RollingFile>
+</Appenders>
+<Loggers>
+    <!-- Logger for queries.log -->
+    <Logger name="queriesLogger" level="info" additivity="false">
+        <AppenderRef ref="QueriesFile"/>
+    </Logger>
+
+    <!-- Logger for errors.log -->
+    <Logger name="errorsLogger" level="error" additivity="false">
+        <AppenderRef ref="ErrorsFile"/>
+    </Logger>
+
+    <Root level="info">
+        <AppenderRef ref="Console"/>
+    </Root>
+</Loggers>
+</Configuration>
+
