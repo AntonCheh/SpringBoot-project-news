@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class CustomerStorage {
+public class CustomerStorage extends Exception {
     private final Map<String, Customer> storage;
     static List<String> errorMessages;
     public CustomerStorage() {
@@ -23,11 +23,9 @@ public class CustomerStorage {
         String email = components[INDEX_EMAIL];
         String phone = components[INDEX_PHONE];
 
-        try {
             if (components.length != EXPECTED_COMPONENTS) {
                 throw new IllegalArgumentException("Неверное количество элементов. Ожидалось " + EXPECTED_COMPONENTS);
             }
-
           errorMessages = new ArrayList<>();
 
             if (!isValidPhoneNumber(phone)) {
@@ -42,20 +40,12 @@ public class CustomerStorage {
                 throw new IllegalArgumentException(String.join(" ", errorMessages));
             }
             Main.queriesLogger.info("Добавлен новый клиент: " + name + ", email: " + email + ", телефон: " + phone);
-
             // storage.put(name, new Customer(name, phone, components[INDEX_EMAIL]));
             storage.put(name, new Customer(name, phone, email));
-        } catch  (IllegalArgumentException e) {
-
-            String errorMessage = "Ошибка при добавлении клиента: " + e.getMessage();
-            Main.errorsLogger.error(errorMessage, e);
-            System.err.println(errorMessage);
-
+        }
 //            String errorMessage = "Ошибка при добавлении клиента: " + e.getMessage();
 //            Main.logger.log(Level.ERROR, errorMessage, e);
 //            System.err.println(errorMessage);
-        }
-    }
             private boolean isValidPhoneNumber (String phoneNumber){
 
         return phoneNumber.matches("\\+7\\d{10}");
