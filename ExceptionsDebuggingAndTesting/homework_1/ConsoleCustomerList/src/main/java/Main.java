@@ -55,7 +55,10 @@ public class Main {
             }
              catch (IllegalArgumentException e) {
                 //logger.log(Level.ERROR, "Ошибка выполнения команды: " + e.getMessage(), e);
-                 errorsLogger.error("Ошибка выполнения команды: " + e.getMessage(), e);
+                // errorsLogger.error("Ошибка выполнения команды: " + e.getMessage(), e);
+                 String errorMessage = "Ошибка при добавлении клиента: " + e.getMessage();
+                 errorsLogger.error(errorMessage, e);
+                 System.err.println(errorMessage);
             }
         }
     }

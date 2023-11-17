@@ -40,13 +40,14 @@ public class CustomerStorage extends Exception {
                 throw new IllegalArgumentException(String.join(" ", errorMessages));
             }
             Main.queriesLogger.info("Добавлен новый клиент: " + name + ", email: " + email + ", телефон: " + phone);
+
             // storage.put(name, new Customer(name, phone, components[INDEX_EMAIL]));
             storage.put(name, new Customer(name, phone, email));
         }
 //            String errorMessage = "Ошибка при добавлении клиента: " + e.getMessage();
 //            Main.logger.log(Level.ERROR, errorMessage, e);
 //            System.err.println(errorMessage);
-            private boolean isValidPhoneNumber (String phoneNumber){
+             private boolean isValidPhoneNumber (String phoneNumber){
 
         return phoneNumber.matches("\\+7\\d{10}");
             }
