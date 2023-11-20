@@ -53,7 +53,7 @@ public class Main {
                 System.err.println("Не введена команда");
 
             }
-             catch (IllegalArgumentException e) {
+             catch (CustomerStorage.WrongDataException | CustomerStorage.WrongEmailException| CustomerStorage.WrongPhoneNumberException e) {
                 //logger.log(Level.ERROR, "Ошибка выполнения команды: " + e.getMessage(), e);
                 // errorsLogger.error("Ошибка выполнения команды: " + e.getMessage(), e);
                  String errorMessage = "Ошибка при добавлении клиента: " + e.getMessage();
