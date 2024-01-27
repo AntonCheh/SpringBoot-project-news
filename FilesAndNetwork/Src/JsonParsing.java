@@ -1,5 +1,97 @@
 package Src;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+
+//Найден файл: C:\Users\User\Desktop\stations-data\data\2\4\depths-1.json
+//        Найден файл: C:\Users\User\Desktop\stations-data\data\4\6\depths-3.json
+//        Найден файл: C:\Users\User\Desktop\stations-data\data\7\1\depths-2.json
+
 public class JsonParsing {
 
+    private static final String DATA_FILE = "/Users/User/Desktop/stations-data/data/2/4/depths-1.json";
+    private static final String DATA_FILE2 = "/Users/User/Desktop/stations-data/data/4/6/depths-3.json";
+    private static final String DATA_FILE3 = "/Users/User/Desktop/stations-data/data/7/1/depths-2.json";
+
+    public static void main(String[] args) {
+        List<Station> stations = parseJsonFile();
+        printStations(stations);
+    }
+
+    private static List<Station> parseJsonFile() {
+        try {
+            JSONParser parser = new JSONParser();
+            Object jsonData = parser.parse(getJsonFile());
+
+            if (jsonData instanceof JSONArray) {
+                return parseStations((JSONArray) jsonData);
+            } else {
+                throw new IllegalArgumentException("Invalid JSON format: Expected JSONArray");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    private static List<Station> parseStations(JSONArray stationsArray) {
+        List<Station> stations = new ArrayList<>();
+        stationsArray.forEach(stationObject -> {
+            if (stationObject instanceof JSONObject) {
+                JSONObject stationJson = (JSONObject) stationObject;
+                String stationName = (String) stationJson.get("station_name");
+                String depth = (String) stationJson.get("depth");
+
+                Station station = new Station(stationName, depth);
+                stations.add(station);
+            } else {
+                throw new IllegalArgumentException("Invalid JSON format: Expected JSONObject in stationsArray");
+            }
+        });
+        return stations;
+    }
+
+    private static String getJsonFile() {
+        StringBuilder builder = new StringBuilder();
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(DATA_FILE2));
+            lines.forEach(builder::append);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return builder.toString();
+    }
+
+    private static void printStations(List<Station> stations) {
+        stations.forEach(station -> {
+            System.out.println("Station Name: " + station.getStationName());
+            System.out.println("Depth: " + station.getDepth());
+            System.out.println();
+        });
+    }
+
+    static class Station {
+        private String stationName;
+        private String depth;
+
+        public Station(String stationName, String depth) {
+            this.stationName = stationName;
+            this.depth = depth;
+        }
+
+        public String getStationName() {
+            return stationName;
+        }
+
+        public String getDepth() {
+            return depth;
+        }
+    }
 }
+
