@@ -15,6 +15,12 @@ public class FindFolder {
     public static String out = path + "resultdata";
 
     public static void main(String[] args) throws Exception {
+
+        File outputDirectory = new File(out);
+        if (!outputDirectory.exists()) {
+            outputDirectory.mkdirs();  // Создаем директорию, если её нет
+        }
+
         archiveZipOut();
         searchFiles(out);
     }
@@ -30,14 +36,8 @@ public class FindFolder {
             if (entry.isDirectory()) {
                 file.mkdirs();
             } else {
-                FileOutputStream outputStream = new FileOutputStream(file);
-                byte[] buffer = new byte[1024];
-                int len;
-                while ((len = zipInput.read(buffer)) > 0) {
-                    outputStream.write(buffer, 0, len);
-                }
-                outputStream.flush();
-                outputStream.close();
+               byte [] bytes = zipInput.readAllBytes();
+               Files.write(Paths.get(file.getAbsolutePath()),bytes,StandardOpenOption.CREATE);
             }
         }
     }
