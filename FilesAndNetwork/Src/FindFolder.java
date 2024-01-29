@@ -1,17 +1,44 @@
 package Src;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public class FindFolder {
-    public static void main(String[] args) {
-         String files = "C:/Users/User/Desktop/stations-data/data";
+    public static String path = "/Users/User/Desktop/";
+    public static String in = path + "stations.zip";
+    public static String out = path + "resultdata";
 
-        try {
-            searchFiles(files);
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static void main(String[] args) throws Exception {
+        archiveZipOut();
+        searchFiles(out);
+    }
+    public static void archiveZipOut() throws Exception {
+        FileInputStream inputStream = new FileInputStream(in);
+        ZipInputStream zipInput = new ZipInputStream(inputStream);
+        while (true) {
+            ZipEntry entry = zipInput.getNextEntry();
+            if (entry == null) {
+                break;
+            }
+            File file = new File(out + entry.getName());
+            if (entry.isDirectory()) {
+                file.mkdirs();
+            } else {
+                FileOutputStream outputStream = new FileOutputStream(file);
+                byte[] buffer = new byte[1024];
+                int len;
+                while ((len = zipInput.read(buffer)) > 0) {
+                    outputStream.write(buffer, 0, len);
+                }
+                outputStream.flush();
+                outputStream.close();
+            }
         }
     }
     private static void searchFiles(String folderPath) throws IOException {
