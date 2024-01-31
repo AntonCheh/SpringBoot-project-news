@@ -20,7 +20,6 @@ public class FindFolder {
         if (!outputDirectory.exists()) {
             outputDirectory.mkdirs();  // Создаем директорию, если её нет
         }
-
         archiveZipOut();
         searchFiles(out);
     }
