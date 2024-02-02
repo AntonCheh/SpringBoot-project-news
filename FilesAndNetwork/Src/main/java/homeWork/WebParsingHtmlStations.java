@@ -1,4 +1,4 @@
-package Src;
+package homeWork;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,11 +10,23 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-public class WebParsingHtmlStations {
-    public static void main(String[] args) throws IOException {
-            Document document = Jsoup.connect("https://skillbox-java.github.io").get();
-            Elements elements = document.select("div.js-metro-stations");
+class WebParsingHtmlStations {
 
+        static Document document;
+    static {
+        try {
+            document = Jsoup.connect("https://skillbox-java.github.io").get();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    static Elements elements = document.select("div.js-metro-stations");
+    public static void main(String[] args) throws IOException {
+            printWebStations();
+
+
+        }
+        public static void printWebStations () {
             StringBuilder builder = new StringBuilder();
 
             elements.forEach(element -> {
@@ -32,4 +44,5 @@ public class WebParsingHtmlStations {
             });
             System.out.println(builder.toString());
         }
+
     }

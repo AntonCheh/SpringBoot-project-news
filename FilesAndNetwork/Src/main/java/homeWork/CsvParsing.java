@@ -1,4 +1,4 @@
-package Src;
+package homeWork;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,9 +12,6 @@ public class CsvParsing {
     public static String filePath = "/Users/User/Desktop/resultdata/4/6/dates-1.csv";
     public static int count = 0;
 
-    public static void main(String[] args) {
-        print();
-    }
 
     public static void print() {
         List<TypesOfDates> parsedFilesCVS = parseCSV(filePath);
@@ -26,7 +23,7 @@ public class CsvParsing {
         }
     }
 
-    public static List<TypesOfDates> parseCSV(String filePath) {
+    static List<TypesOfDates> parseCSV(String filePath) {
         List<TypesOfDates> information = new ArrayList<>();
 
         try {

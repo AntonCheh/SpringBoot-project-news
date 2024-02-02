@@ -1,4 +1,4 @@
-package Src;
+package homeWork;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -9,23 +9,22 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-
-//Найден файл: C:\Users\User\Desktop\stations-data\data\2\4\depths-1.json
-//        Найден файл: C:\Users\User\Desktop\stations-data\data\4\6\depths-3.json
-//        Найден файл: C:\Users\User\Desktop\stations-data\data\7\1\depths-2.json
-
 public class JsonParsing {
 
     private static final String DATA_FILE = "/Users/User/Desktop/stations-data/data/2/4/depths-1.json";
     private static final String DATA_FILE2 = "/Users/User/Desktop/stations-data/data/4/6/depths-3.json";
     private static final String DATA_FILE3 = "/Users/User/Desktop/stations-data/data/7/1/depths-2.json";
 
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
+//
+//    }
+
+    public static void printJsonParsing () {
         List<Station> stations = parseJsonFile();
-        printStations(stations);
+          printStations(stations);
     }
 
-    private static List<Station> parseJsonFile() {
+    static List<Station> parseJsonFile() {
         try {
             JSONParser parser = new JSONParser();
             Object jsonData = parser.parse(getJsonFile());

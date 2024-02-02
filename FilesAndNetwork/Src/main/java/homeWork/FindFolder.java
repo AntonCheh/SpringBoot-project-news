@@ -1,4 +1,4 @@
-package Src;
+package homeWork;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,8 +14,17 @@ public class FindFolder {
     public static String in = path + "stations.zip";
     public static String out = path + "resultdata";
 
-    public static void main(String[] args) throws Exception {
+//    public static void main(String[] args) throws Exception {
+//
+//        File outputDirectory = new File(out);
+//        if (!outputDirectory.exists()) {
+//            outputDirectory.mkdirs();  // Создаем директорию, если её нет
+//        }
+//        archiveZipOut();
+//        searchFiles(out);
+//    }
 
+    public static void printFindFolder () throws Exception {
         File outputDirectory = new File(out);
         if (!outputDirectory.exists()) {
             outputDirectory.mkdirs();  // Создаем директорию, если её нет
@@ -23,7 +32,8 @@ public class FindFolder {
         archiveZipOut();
         searchFiles(out);
     }
-    public static void archiveZipOut() throws Exception {
+
+    private static void archiveZipOut() throws Exception {
         FileInputStream inputStream = new FileInputStream(in);
         ZipInputStream zipInput = new ZipInputStream(inputStream);
         while (true) {
