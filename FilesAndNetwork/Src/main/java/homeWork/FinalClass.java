@@ -59,18 +59,16 @@ public class FinalClass {
             List<CsvParsing.TypesOfDates> csv,
             List<JsonParsing.Station> json) {
 
-        // TODO: Реализуйте логику объединения списков
-        // Обратите внимание на указания в комментариях внизу
 
-        return new ArrayList<>(); // Заглушка
+
+        return new ArrayList<>();
     }
 
     private static void saveStationsToJsonFile(List<Station> stations, String filePath) {
-        // TODO: Реализуйте сохранение списка станций в формате JSON
-        // Обратите внимание на указания в комментариях внизу
+
     }
 
-    // Ваша структура класса Station
+
     static class Station {
         private String name;
         private String line;
@@ -82,15 +80,15 @@ public class FinalClass {
 
         @Override
         public String toString() {
-            // TODO: Реализуйте формат вывода объекта Station
-            // Обратите внимание на указания в комментариях внизу
+            // TODO:  формат вывода объекта Station
+
             return super.toString();
         }
 
         // Метод для конвертации в JSON
         public String toJson() {
-            // TODO: Реализуйте конвертацию объекта в формат JSON
-            // Обратите внимание на указания в комментариях внизу
+            // TODO:  конвертацию объекта в формат JSON
+            //
             return "";
         }
     }
