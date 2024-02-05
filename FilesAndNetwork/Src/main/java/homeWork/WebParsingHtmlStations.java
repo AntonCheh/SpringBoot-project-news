@@ -12,21 +12,17 @@ import java.nio.file.Paths;
 import java.util.List;
 class WebParsingHtmlStations {
 
-        static Document document;
-    static {
+          static Document document;
+    static  {
         try {
             document = Jsoup.connect("https://skillbox-java.github.io").get();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     static Elements elements = document.select("div.js-metro-stations");
-    public static void main(String[] args) throws IOException {
-            printWebStations();
-
-
-        }
         public static void printWebStations () {
+
             StringBuilder builder = new StringBuilder();
 
             elements.forEach(element -> {
@@ -38,8 +34,8 @@ class WebParsingHtmlStations {
                     String stationNumber = station.select("span.num").text();
                     String stationName = station.select("span.name").text();
 
-                    builder.append("Номер станции: ").append(stationNumber).append("\n");
-                    builder.append("Имя станции: ").append(stationName).append("\n\n");
+                    builder.append("Номер линии:").append(stationNumber).append("\n");
+                    builder.append("Имя станции:").append(stationName).append("\n\n");
                 });
             });
             System.out.println(builder.toString());
