@@ -2,52 +2,71 @@ package homeWork;
 
 import com.solidfire.gson.JsonObject;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Station {
-    private String stationNumber;
-    private String stationName;
 
-    public Station(String stationNumber, String stationName) {
-        this.stationNumber = stationNumber;
+    private String stationName;
+    private String depth;
+    private LocalDate date;
+
+    public Station(String stationName) {
         this.stationName = stationName;
     }
 
-    public String getStationNumber() {
-        return stationNumber;
+    public Station(String stationName, String depth) {
+        this.stationName = stationName;
+        this.depth = depth;
+    }
+
+    public Station(String stationName, LocalDate date) {
+        this.stationName = stationName;
+        this.date = date;
     }
 
     public String getStationName() {
         return stationName;
     }
 
-    public JsonObject toJson() {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("stationNumber", stationNumber);
-        jsonObject.addProperty("stationName", stationName);
-        return jsonObject;
+    public String getDepth() {
+        return depth;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        if (depth != null) {
+            return  stationName + " "  + depth;
+        } else if (date != null) {
+            return stationName + " "  + date;
+        } else {
+            return  stationName;
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Station station = (Station) o;
+        return Objects.equals(stationName, station.stationName) &&
+                Objects.equals(depth, station.depth) &&
+                Objects.equals(date, station.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stationName, depth, date);
     }
 }
 
-
-
-    /*
-    private String stationNumber;
-    private String stationName;
-
-    public Station(String stationNumber, String stationName) {
-        this.stationNumber = stationNumber;
-        this.stationName = stationName;
-    }
-
-    public String getStationNumber() {
-        return stationNumber;
-    }
-
-    public String getStationName() {
-        return stationName;
-    }
-
-
-     */

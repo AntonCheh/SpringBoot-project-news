@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FinalClass {
        public static void main(String[] args) {
-           WebParsingHtmlLines.printWebLines();
+           WebParsingHtmlStations.printWebStations();
     }
 
 }

@@ -15,19 +15,27 @@ public class JsonParsing {
     private static final String DATA_FILE2 = "/Users/User/Desktop/stations-data/data/4/6/depths-3.json";
     private static final String DATA_FILE3 = "/Users/User/Desktop/stations-data/data/7/1/depths-2.json";
 
-//    public static void main(String[] args) {
-//
-//    }
 
-    public static void printJsonParsing () {
-        List<Station> stations = parseJsonFile();
-          printStations(stations);
+    public static void main(String[] args) {
+        List<Station> allStations = new ArrayList<>();
+
+        List<Station> stations1 = parseJsonFile(DATA_FILE);
+        allStations.addAll(stations1);
+
+        List<Station> stations2 = parseJsonFile(DATA_FILE2);
+        allStations.addAll(stations2);
+
+        List<Station> stations3 = parseJsonFile(DATA_FILE3);
+        allStations.addAll(stations3);
+
+        printStations(allStations);
+
     }
 
-    static List<Station> parseJsonFile() {
+    static List<Station> parseJsonFile (String filePath) {
         try {
             JSONParser parser = new JSONParser();
-            Object jsonData = parser.parse(getJsonFile());
+            Object jsonData = parser.parse(getJsonFile(filePath));
 
             if (jsonData instanceof JSONArray) {
                 return parseStations((JSONArray) jsonData);
@@ -39,6 +47,7 @@ public class JsonParsing {
             return null;
         }
     }
+
     private static List<Station> parseStations(JSONArray stationsArray) {
         List<Station> stations = new ArrayList<>();
         stationsArray.forEach(stationObject -> {
@@ -56,10 +65,10 @@ public class JsonParsing {
         return stations;
     }
 
-    private static String getJsonFile() {
+    private static String getJsonFile(String filePath) {
         StringBuilder builder = new StringBuilder();
         try {
-            List<String> lines = Files.readAllLines(Paths.get(DATA_FILE2));
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
             lines.forEach(builder::append);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -75,22 +84,6 @@ public class JsonParsing {
         });
     }
 
-    static class Station {
-        private String stationName;
-        private String depth;
-
-        public Station(String stationName, String depth) {
-            this.stationName = stationName;
-            this.depth = depth;
-        }
-
-        public String getStationName() {
-            return stationName;
-        }
-
-        public String getDepth() {
-            return depth;
-        }
-    }
 }
+
 

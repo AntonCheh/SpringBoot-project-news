@@ -12,12 +12,10 @@ import java.util.List;
 
 public class Line {
     private String lineNumber;
-    private String lineName;
     private List<Station> stations;
 
-    public Line(String lineNumber, String lineName) {
+    public Line(String lineNumber) {
         this.lineNumber = lineNumber;
-        this.lineName = lineName;
         this.stations = new ArrayList<>();
     }
 
@@ -25,33 +23,12 @@ public class Line {
         return lineNumber;
     }
 
-    public String getLineName() {
-        return lineName;
+    public List<Station> getStations() {
+        return stations;
     }
 
     public void addStation(Station station) {
         stations.add(station);
     }
-
-    public List<Station> getStations() {
-        return stations;
-    }
-
-    public JsonObject toJson() {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("lineNumber", lineNumber);
-        jsonObject.addProperty("lineName", lineName);
-
-        JsonArray stationsArray = new JsonArray();
-        for (Station station : stations) {
-            stationsArray.add(station.toJson());
-        }
-
-        jsonObject.add("stations", stationsArray);
-
-        return jsonObject;
-    }
 }
-
-
 
