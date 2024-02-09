@@ -9,26 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CsvParsing {
-    public static String filePath = "/Users/User/Desktop/resultdata/4/6/dates-1.csv";
-    public static String filePath2 = "/Users/User/Desktop/resultdata/0/5/dates-2.csv";
-    public static String filePath3 = "/Users/User/Desktop/resultdata/9/6/dates-3.csv";
+//    public static String filePath = "/Users/User/Desktop/resultdata/4/6/dates-1.csv";
+//    public static String filePath2 = "/Users/User/Desktop/resultdata/0/5/dates-2.csv";
+//    public static String filePath3 = "/Users/User/Desktop/resultdata/9/6/dates-3.csv";
     public static int count = 0;
 
-    public static void main(String[] args) {
-              print();
-    }
+//    public static void main(String[] args) {
+//              print();
+//    }
 
-    public static void print() {
+    public static void print(List<String> filePaths) {
         List<Station> allParsedFiles = new ArrayList<>();
 
-        List<Station> parsedFilesCVS1 = parseCSV(filePath);
-        allParsedFiles.addAll(parsedFilesCVS1);
-
-        List<Station> parsedFilesCVS2 = parseCSV(filePath2);
-        allParsedFiles.addAll(parsedFilesCVS2);
-
-        List<Station> parsedFilesCVS3 = parseCSV(filePath3);
-        allParsedFiles.addAll(parsedFilesCVS3);
+        for (String filePath : filePaths) {
+            List<Station> parsedFiles = parseCSV(filePath);
+            allParsedFiles.addAll(parsedFiles);
+        }
 
         printParsedFiles(allParsedFiles);
     }

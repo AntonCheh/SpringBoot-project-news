@@ -16,21 +16,21 @@ public class JsonParsing {
     private static final String DATA_FILE3 = "/Users/User/Desktop/stations-data/data/7/1/depths-2.json";
 
 
-    public static void main(String[] args) {
-        List<Station> allStations = new ArrayList<>();
-
-        List<Station> stations1 = parseJsonFile(DATA_FILE);
-        allStations.addAll(stations1);
-
-        List<Station> stations2 = parseJsonFile(DATA_FILE2);
-        allStations.addAll(stations2);
-
-        List<Station> stations3 = parseJsonFile(DATA_FILE3);
-        allStations.addAll(stations3);
-
-        printStations(allStations);
-
-    }
+//    public static void main(String[] args) {
+//        List<Station> allStations = new ArrayList<>();
+//
+//        List<Station> stations1 = parseJsonFile(DATA_FILE);
+//        allStations.addAll(stations1);
+//
+//        List<Station> stations2 = parseJsonFile(DATA_FILE2);
+//        allStations.addAll(stations2);
+//
+//        List<Station> stations3 = parseJsonFile(DATA_FILE3);
+//        allStations.addAll(stations3);
+//
+//        printStations(allStations);
+//
+//    }
 
     static List<Station> parseJsonFile (String filePath) {
         try {
@@ -84,6 +84,17 @@ public class JsonParsing {
         });
     }
 
+
+        public static void print(List<String> filePaths) {
+            List<Station> allStations = new ArrayList<>();
+
+            for (String filePath : filePaths) {
+                List<Station> stations = parseJsonFile(filePath);
+                allStations.addAll(stations);
+            }
+
+            printStations(allStations);
+        }
 }
 
 
