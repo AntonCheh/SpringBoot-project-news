@@ -13,11 +13,11 @@ import java.util.List;
 
 public class WebParsingHtmlLines {
 
-    public static void main(String[] args) {
-print();
-    }
+//    public static void main(String[] args) {
+//print();
+//    }
 
-    private static void print (){
+    public static void print (){
 
         String htmlFile = parseFile(Path.of("data/code.html"));
         Document document = Jsoup.parse(htmlFile);

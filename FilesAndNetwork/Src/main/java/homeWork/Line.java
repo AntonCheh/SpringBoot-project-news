@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Line {
     private String lineNumber;
+    private String lineName;
     private List<Station> stations;
 
     public Line(String lineNumber) {
@@ -29,6 +30,11 @@ public class Line {
 
     public void addStation(Station station) {
         stations.add(station);
+    }
+
+    public String getLineName() {
+
+        return lineName;
     }
 }
 

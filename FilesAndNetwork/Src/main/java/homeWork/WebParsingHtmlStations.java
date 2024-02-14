@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-class WebParsingHtmlStations {
+public class WebParsingHtmlStations {
 
     static Document document;
 
@@ -30,9 +30,9 @@ class WebParsingHtmlStations {
 
     static Elements elements = document.select("div.js-metro-stations");
 
-    public static void main(String[] args) {
-        printWebStations();
-    }
+//    public static void main(String[] args) {
+//        printWebStations();
+//    }
 
     public static void printWebStations() {
         List<Line> lines = new ArrayList<>();
@@ -43,7 +43,6 @@ class WebParsingHtmlStations {
             Elements stations = element.select("p.single-station");
 
             stations.forEach(station -> {
-                // String stationNumber = station.select("span.num").text();
                 String stationName = station.select("span.name").text();
                 Station stationObject = new Station(stationName);
                 line.addStation(stationObject);
@@ -52,30 +51,17 @@ class WebParsingHtmlStations {
             lines.add(line);
         });
 
-        saveToJsonFile(lines, "data/metro.json");
+        // Вместо сохранения в JSON выводим станции в консоль
+        printStations(lines);
     }
 
-    public static void saveToJsonFile(List<Line> lines, String filePath) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        JsonObject jsonObject = new JsonObject();
-        JsonObject stationsObject = new JsonObject();
-
-        for (Line line : lines) {
-            JsonArray stationsArray = new JsonArray();
-
-            for (Station station : line.getStations()) {
-                stationsArray.add(station.getStationName());
-            }
-
-            stationsObject.add(line.getLineNumber(), stationsArray);
-        }
-
-        jsonObject.add("stations", stationsObject);
-
-        try (FileWriter writer = new FileWriter(filePath)) {
-            gson.toJson(jsonObject, writer);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void printStations(List<Line> lines) {
+        lines.forEach(line -> {
+            System.out.println("Line: " + line.getLineNumber());
+            line.getStations().forEach(station -> {
+                System.out.println(station.getStationName());
+            });
+            System.out.println();
+        });
     }
 }

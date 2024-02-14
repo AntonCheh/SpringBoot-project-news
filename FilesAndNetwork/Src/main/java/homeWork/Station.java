@@ -1,10 +1,6 @@
 package homeWork;
 
-import com.solidfire.gson.JsonObject;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Station {
@@ -12,6 +8,7 @@ public class Station {
     private String stationName;
     private String depth;
     private LocalDate date;
+    private boolean hasConnection;
 
     public Station(String stationName) {
         this.stationName = stationName;
@@ -67,6 +64,10 @@ public class Station {
     @Override
     public int hashCode() {
         return Objects.hash(stationName, depth, date);
+    }
+
+    public boolean hasConnection() {
+        return hasConnection;
     }
 }
 

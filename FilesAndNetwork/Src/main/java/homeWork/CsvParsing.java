@@ -3,30 +3,27 @@ package homeWork;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CsvParsing {
-//    public static String filePath = "/Users/User/Desktop/resultdata/4/6/dates-1.csv";
-//    public static String filePath2 = "/Users/User/Desktop/resultdata/0/5/dates-2.csv";
-//    public static String filePath3 = "/Users/User/Desktop/resultdata/9/6/dates-3.csv";
+    public static String path = FromZipArchive.out + "data";
     public static int count = 0;
 
-//    public static void main(String[] args) {
-//              print();
-//    }
+    public static void main(String[] args) throws IOException {
+        FindFolder.walkAndPrintFiles(Path.of(path));
+        parseAndPrint(FindFolder.pathsOfCvs);
+    }
 
-    public static void print(List<String> filePaths) {
-        List<Station> allParsedFiles = new ArrayList<>();
-
-        for (String filePath : filePaths) {
-            List<Station> parsedFiles = parseCSV(filePath);
-            allParsedFiles.addAll(parsedFiles);
+    public static void parseAndPrint(List<Path> filePaths) {
+        for (Path filePath : filePaths) {
+            List<Station> parsedFiles = parseCSV(filePath.toString());
+            printParsedFiles(parsedFiles);
         }
-
-        printParsedFiles(allParsedFiles);
     }
 
     public static void printParsedFiles(List<Station> parsedFiles) {
@@ -72,3 +69,5 @@ public class CsvParsing {
         return LocalDate.parse(dateString, formatter);
     }
 }
+
+

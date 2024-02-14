@@ -5,32 +5,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JsonParsing {
-
-    private static final String DATA_FILE = "/Users/User/Desktop/stations-data/data/2/4/depths-1.json";
-    private static final String DATA_FILE2 = "/Users/User/Desktop/stations-data/data/4/6/depths-3.json";
-    private static final String DATA_FILE3 = "/Users/User/Desktop/stations-data/data/7/1/depths-2.json";
-
-
-//    public static void main(String[] args) {
-//        List<Station> allStations = new ArrayList<>();
-//
-//        List<Station> stations1 = parseJsonFile(DATA_FILE);
-//        allStations.addAll(stations1);
-//
-//        List<Station> stations2 = parseJsonFile(DATA_FILE2);
-//        allStations.addAll(stations2);
-//
-//        List<Station> stations3 = parseJsonFile(DATA_FILE3);
-//        allStations.addAll(stations3);
-//
-//        printStations(allStations);
-//
-//    }
 
     static List<Station> parseJsonFile (String filePath) {
         try {
@@ -84,17 +64,13 @@ public class JsonParsing {
         });
     }
 
-
-        public static void print(List<String> filePaths) {
-            List<Station> allStations = new ArrayList<>();
-
-            for (String filePath : filePaths) {
-                List<Station> stations = parseJsonFile(filePath);
-                allStations.addAll(stations);
-            }
-
-            printStations(allStations);
+    public static void parseJsonFiles(List<Path> jsonFilePaths) {
+        List<Station> allStations = new ArrayList<>();
+        for (Path jsonFilePath : jsonFilePaths) {
+            List<Station> stations = parseJsonFile(jsonFilePath.toString());
+            allStations.addAll(stations);
         }
+        printStations(allStations);
+    }
 }
-
 
