@@ -29,9 +29,9 @@ public class Metro {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonArray jsonArray = new JsonArray();
 
-        for (Line line : lines) {
-            jsonArray.add(line.toJson());
-        }
+//        for (Line line : lines) {
+//            jsonArray.add(line.toJson());
+//        }
 
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(jsonArray, writer);

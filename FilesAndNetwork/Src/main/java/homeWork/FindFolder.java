@@ -11,6 +11,16 @@ public class FindFolder {
     public static List<Path> pathsOfJsons = new ArrayList<>();
     public static List<Path> pathsOfCvs = new ArrayList<>();
 
+    public static void main(String[] args) {
+        try {
+            walkAndPrintFiles(Path.of(FromZipArchive.out));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(pathsOfJsons);
+        System.out.println(pathsOfCvs);
+    }
+
     public static void walkAndPrintFiles(Path directory) throws IOException {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory)) {
             for (Path path : stream) {

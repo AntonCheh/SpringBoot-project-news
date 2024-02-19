@@ -12,6 +12,11 @@ import java.util.List;
 
 public class JsonParsing {
 
+    public static void main(String[] args) {
+
+        parseJsonFile((FindFolder.pathsOfJsons.toString()));
+    }
+
     static List<Station> parseJsonFile (String filePath) {
         try {
             JSONParser parser = new JSONParser();
