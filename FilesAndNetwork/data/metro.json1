@@ -1,0 +1,1424 @@
+[
+  {
+    "lineNumber": "1",
+    "lineName": "Сокольническая линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Бульвар Рокоссовского"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Черкизовская"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Преображенская площадь"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Сокольники"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Красносельская"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Комсомольская"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Красные ворота"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Чистые пруды"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Лубянка"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Охотный ряд"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Библиотека имени Ленина"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Кропоткинская"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Парк Культуры"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Фрунзенская"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Спортивная"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Воробьевы горы"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Университет"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Проспект Вернадского"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Юго-Западная"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Тропарёво"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Румянцево"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Саларьево"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Филатов Луг"
+      },
+      {
+        "stationNumber": "24. ",
+        "stationName": "Прокшино"
+      },
+      {
+        "stationNumber": "25. ",
+        "stationName": "Ольховая"
+      },
+      {
+        "stationNumber": "26. ",
+        "stationName": "Коммунарка"
+      }
+    ]
+  },
+  {
+    "lineNumber": "2",
+    "lineName": "Замоскворецкая линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Ховрино"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Беломорская"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Речной вокзал"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Водный стадион"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Войковская"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Сокол"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Аэропорт"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Динамо"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Белорусская"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Маяковская"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Тверская"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Театральная"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Новокузнецкая"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Павелецкая"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Автозаводская"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Технопарк"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Коломенская"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Каширская"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Кантемировская"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Царицыно"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Орехово"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Домодедовская"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Красногвардейская"
+      },
+      {
+        "stationNumber": "24. ",
+        "stationName": "Алма-Атинская"
+      }
+    ]
+  },
+  {
+    "lineNumber": "3",
+    "lineName": "Арбатско-Покровская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Пятницкое шоссе"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Митино"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Волоколамская"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Мякинино"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Строгино"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Крылатское"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Молодежная"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Кунцевская"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Славянский бульвар"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Парк Победы"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Киевская"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Смоленская"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Арбатская"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Площадь Революции"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Курская"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Бауманская"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Электрозаводская"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Семеновская"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Партизанская"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Измайловская"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Первомайская"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Щелковская"
+      }
+    ]
+  },
+  {
+    "lineNumber": "4",
+    "lineName": "Филевская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Александровский сад"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Арбатская"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Смоленская"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Киевская"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Студенческая"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Кутузовская"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Фили"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Багратионовская"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Филевский парк"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Пионерская"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Кунцевская"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Выставочная"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Международная"
+      }
+    ]
+  },
+  {
+    "lineNumber": "5",
+    "lineName": "Кольцевая линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Киевская"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Парк Культуры"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Октябрьская"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Добрынинская"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Павелецкая"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Таганская"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Курская"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Комсомольская"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Проспект Мира"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Новослободская"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Белорусская"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Краснопресненская"
+      }
+    ]
+  },
+  {
+    "lineNumber": "6",
+    "lineName": "Калужско-Рижская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Новоясеневская"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Ясенево"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Теплый стан"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Коньково"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Беляево"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Калужская"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Новые Черёмушки"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Профсоюзная"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Академическая"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Ленинский проспект"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Шаболовская"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Октябрьская"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Третьяковская"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Китай-город"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Тургеневская"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Сухаревская"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Проспект Мира"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Рижская"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Алексеевская"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "ВДНХ"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Ботанический сад"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Свиблово"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Бабушкинская"
+      },
+      {
+        "stationNumber": "24. ",
+        "stationName": "Медведково"
+      }
+    ]
+  },
+  {
+    "lineNumber": "7",
+    "lineName": "Таганско-Краснопресненская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Котельники"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Жулебино"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Лермонтовский проспект"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Выхино"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Рязанский проспект"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Кузьминки"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Текстильщики"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Волгоградский проспект"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Пролетарская"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Таганская"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Китай-город"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Кузнецкий мост"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Пушкинская"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Баррикадная"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Улица 1905 года"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Беговая"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Полежаевская"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Октябрьское Поле"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Щукинская"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Спартак"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Тушинская"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Сходненская"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Планерная"
+      }
+    ]
+  },
+  {
+    "lineNumber": "8",
+    "lineName": "Калининско-Солнцевская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Новокосино"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Новогиреево"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Перово"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Шоссе Энтузиастов"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Авиамоторная"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Площадь Ильича"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Марксистская"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Третьяковская"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Деловой центр"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Парк Победы"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Минская"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Ломоносовский проспект"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Раменки"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Мичуринский проспект"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Озёрная"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Говорово"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Солнцево"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Боровское шоссе"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Новопеределкино"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Рассказовка"
+      }
+    ]
+  },
+  {
+    "lineNumber": "9",
+    "lineName": "Серпуховско-Тимирязевская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Бульвар Дмитрия Донского"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Аннино"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Улица академика Янгеля"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Пражская"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Южная"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Чертановская"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Севастопольская"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Нахимовский Проспект"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Нагорная"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Нагатинская"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Тульская"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Серпуховская"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Полянка"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Боровицкая"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Чеховская"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Цветной бульвар"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Менделеевская"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Савеловская"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Дмитровская"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Тимирязевская"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Петровско-Разумовская"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Владыкино"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Отрадное"
+      },
+      {
+        "stationNumber": "24. ",
+        "stationName": "Бибирево"
+      },
+      {
+        "stationNumber": "25. ",
+        "stationName": "Алтуфьево"
+      }
+    ]
+  },
+  {
+    "lineNumber": "10",
+    "lineName": "Люблинско-Дмитровская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Зябликово"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Шипиловская"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Борисово"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Марьино"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Братиславская"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Люблино"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Волжская"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Печатники"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Кожуховская"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Дубровка"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Крестьянская застава"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Римская"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Чкаловская"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Сретенский бульвар"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Трубная"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Достоевская"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Марьина роща"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Бутырская"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Фонвизинская"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Петровско-Разумовская"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Окружная"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Верхние Лихоборы"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Селигерская"
+      }
+    ]
+  },
+  {
+    "lineNumber": "11",
+    "lineName": "Большая Кольцевая Линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Савёловская"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Петровский парк"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "ЦСКА"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Хорошёвская"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Шелепиха"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Деловой центр"
+      }
+    ]
+  },
+  {
+    "lineNumber": "11A",
+    "lineName": "Каховская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Каховская"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Варшавская"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Каширская"
+      }
+    ]
+  },
+  {
+    "lineNumber": "12",
+    "lineName": "Бутовская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Битцевский парк"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Лесопарковая"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Улица Старокачаловская"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Улица Скобелевская"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Бульвар адмирала Ушакова"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Улица Горчакова"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Бунинская Аллея"
+      }
+    ]
+  },
+  {
+    "lineNumber": "14",
+    "lineName": "Центральное Кольцо",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Окружная"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Владыкино"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Ботанический Сад"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Ростокино"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Белокаменная"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Бульвар Рокоссовского"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Локомотив"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Измайлово"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Соколиная Гора"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Шоссе Энтузиастов"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Андроновка"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Нижегородская"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Новохохловская"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Угрешская"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Дубровка"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Автозаводская"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "ЗИЛ"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Верхние Котлы"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Крымская"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Площадь Гагарина"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Лужники"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Кутузовская"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Деловой центр"
+      },
+      {
+        "stationNumber": "24. ",
+        "stationName": "Шелепиха"
+      },
+      {
+        "stationNumber": "25. ",
+        "stationName": "Хорошёво"
+      },
+      {
+        "stationNumber": "26. ",
+        "stationName": "Зорге"
+      },
+      {
+        "stationNumber": "27. ",
+        "stationName": "Панфиловская"
+      },
+      {
+        "stationNumber": "28. ",
+        "stationName": "Стрешнево"
+      },
+      {
+        "stationNumber": "29. ",
+        "stationName": "Балтийская"
+      },
+      {
+        "stationNumber": "30. ",
+        "stationName": "Коптево"
+      },
+      {
+        "stationNumber": "31. ",
+        "stationName": "Лихоборы"
+      }
+    ]
+  },
+  {
+    "lineNumber": "15",
+    "lineName": "Некрасовская линия",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Электрозаводская"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Лефортово"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Авиамоторная"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Нижегородская"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Стахановская"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Окская"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Юго-Восточная"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Косино"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Улица Дмитриевского"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Лухмановская"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Некрасовка"
+      }
+    ]
+  },
+  {
+    "lineNumber": "D1",
+    "lineName": "МЦД-1",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Одинцово"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Баковка"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Сколково"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Немчиновка"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Сетунь"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Рабочий Посёлок"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Кунцево"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Славянский бульвар"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Фили"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Тестовская"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Беговая"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Белорусская"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Савёловская"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Тимирязевская"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Окружная"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Дегунино"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Бескудниково"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Лианозово"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Марк"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Новодачная"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Долгопрудная"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Водники"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Хлебниково"
+      },
+      {
+        "stationNumber": "24. ",
+        "stationName": "Шереметьевская"
+      },
+      {
+        "stationNumber": "25. ",
+        "stationName": "Лобня"
+      }
+    ]
+  },
+  {
+    "lineNumber": "D2",
+    "lineName": "МЦД-2",
+    "stations": [
+      {
+        "stationNumber": "1.  ",
+        "stationName": "Нахабино"
+      },
+      {
+        "stationNumber": "2.  ",
+        "stationName": "Аникеевка"
+      },
+      {
+        "stationNumber": "3.  ",
+        "stationName": "Опалиха"
+      },
+      {
+        "stationNumber": "4.  ",
+        "stationName": "Красногорская"
+      },
+      {
+        "stationNumber": "5.  ",
+        "stationName": "Павшино"
+      },
+      {
+        "stationNumber": "6.  ",
+        "stationName": "Пенягино"
+      },
+      {
+        "stationNumber": "7.  ",
+        "stationName": "Волоколамская"
+      },
+      {
+        "stationNumber": "8.  ",
+        "stationName": "Трикотажная"
+      },
+      {
+        "stationNumber": "9.  ",
+        "stationName": "Тушино"
+      },
+      {
+        "stationNumber": "10. ",
+        "stationName": "Щукинская"
+      },
+      {
+        "stationNumber": "11. ",
+        "stationName": "Стрешнево"
+      },
+      {
+        "stationNumber": "12. ",
+        "stationName": "Красный Балтиец"
+      },
+      {
+        "stationNumber": "13. ",
+        "stationName": "Гражданская"
+      },
+      {
+        "stationNumber": "14. ",
+        "stationName": "Дмитровская"
+      },
+      {
+        "stationNumber": "15. ",
+        "stationName": "Рижская"
+      },
+      {
+        "stationNumber": "16. ",
+        "stationName": "Каланчёвская"
+      },
+      {
+        "stationNumber": "17. ",
+        "stationName": "Курская"
+      },
+      {
+        "stationNumber": "18. ",
+        "stationName": "Москва Товарная"
+      },
+      {
+        "stationNumber": "19. ",
+        "stationName": "Калитники"
+      },
+      {
+        "stationNumber": "20. ",
+        "stationName": "Новохохловская"
+      },
+      {
+        "stationNumber": "21. ",
+        "stationName": "Текстильщики"
+      },
+      {
+        "stationNumber": "22. ",
+        "stationName": "Кубанская"
+      },
+      {
+        "stationNumber": "23. ",
+        "stationName": "Депо"
+      },
+      {
+        "stationNumber": "24. ",
+        "stationName": "Перерва"
+      },
+      {
+        "stationNumber": "25. ",
+        "stationName": "Курьяново"
+      },
+      {
+        "stationNumber": "26. ",
+        "stationName": "Москворечье"
+      },
+      {
+        "stationNumber": "27. ",
+        "stationName": "Царицыно"
+      },
+      {
+        "stationNumber": "28. ",
+        "stationName": "Покровская"
+      },
+      {
+        "stationNumber": "29. ",
+        "stationName": "Красный Строитель"
+      },
+      {
+        "stationNumber": "30. ",
+        "stationName": "Битца"
+      },
+      {
+        "stationNumber": "31. ",
+        "stationName": "Бутово"
+      },
+      {
+        "stationNumber": "32. ",
+        "stationName": "Щербинка"
+      },
+      {
+        "stationNumber": "33. ",
+        "stationName": "Остафьево"
+      },
+      {
+        "stationNumber": "34. ",
+        "stationName": "Силикатная"
+      },
+      {
+        "stationNumber": "35. ",
+        "stationName": "Подольск"
+      }
+    ]
+  }
+]
