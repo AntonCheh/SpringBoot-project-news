@@ -1,19 +1,20 @@
 package ImageResizer;
 
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.RecursiveTask;
+import java.util.stream.Collectors;
+
+import org.jsoup.Connection;
+import org.jsoup.HttpStatusException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 
 public class SiteMapGenerator {
@@ -25,57 +26,62 @@ public class SiteMapGenerator {
 
     public static void main(String[] args) {
         try (FileWriter writer = new FileWriter("sitemap.txt")) {
-            forkJoinPool.invoke(new LinkCrawler(START_URL, 0, writer));
+            LinkCrawler task = new LinkCrawler(START_URL, 0);
+            String result = forkJoinPool.invoke(task);
+            writer.write(result);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static class LinkCrawler extends RecursiveAction {
+    private static class LinkCrawler extends RecursiveTask<String> {
         private final String url;
         private final int depth;
-        private final FileWriter writer;
 
-        public LinkCrawler(String url, int depth, FileWriter writer) {
+        public LinkCrawler(String url, int depth) {
             this.url = url;
             this.depth = depth;
-            this.writer = writer;
         }
 
         @Override
-        protected void compute() {
+        protected String compute() {
             synchronized (visitedUrls) {
                 if (visitedUrls.contains(url)) {
-                    return;
+                    return "";
                 }
                 visitedUrls.add(url);
             }
+
+            StringBuilder result = new StringBuilder();
+            String indent = "\t".repeat(depth);
+            result.append(indent).append(url).append("\n");
 
             try {
                 Document document = Jsoup.connect(url).get();
                 Elements links = document.select("a[href]");
 
-                String indent = "\t".repeat(depth);
-                synchronized (writer) {
-                    writer.write(indent + url + "\n");
-                }
-
                 for (Element link : links) {
                     String linkUrl = link.absUrl("href");
                     if (isValidUrl(linkUrl) && !visitedUrls.contains(linkUrl)) {
+                        LinkCrawler subTask = new LinkCrawler(linkUrl, depth + 1);
+                        subTask.fork();
+                        String childResult = subTask.join();
                         String childIndent = "\t".repeat(depth + 1);
-                        synchronized (writer) {
-                            writer.write(childIndent + linkUrl + "\n");
-                        }
-                        forkJoinPool.execute(new LinkCrawler(linkUrl, depth + 1, writer));
+                        result.append(childIndent).append(childResult);
                     }
                 }
 
-                // Pause to prevent blocking
+                // Проверяем, если нет больше ссылок, то выходим из цикла
+                if (links.isEmpty()) {
+                    return "";
+                }
+
                 Thread.sleep((int) (100 + Math.random() * 50));
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
+
+            return result.toString();
         }
     }
 
