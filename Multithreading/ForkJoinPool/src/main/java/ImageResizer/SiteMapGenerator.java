@@ -4,8 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.RecursiveTask;
+import java.util.concurrent.*;
 
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
@@ -20,7 +19,8 @@ public class SiteMapGenerator {
     private static final String DOMAIN = "lenta.ru";
     private static final String START_URL = "https://lenta.ru/";
     private static final Set<String> visitedUrls = new HashSet<>();
-    private static final ForkJoinPool forkJoinPool = new ForkJoinPool();
+    private static final ForkJoinPool forkJoinPool = new ForkJoinPool(4);
+    private static final int MAX_VISITED = 100; // Ограничение на количество посещенных страниц
 
     public static void main(String[] args) {
         try (FileWriter writer = new FileWriter("sitemap.txt")) {
@@ -44,7 +44,7 @@ public class SiteMapGenerator {
         @Override
         protected String compute() {
             synchronized (visitedUrls) {
-                if (visitedUrls.contains(url)) {
+                if (visitedUrls.size() >= MAX_VISITED || visitedUrls.contains(url)) {
                     return "";
                 }
                 visitedUrls.add(url);
@@ -81,23 +81,23 @@ public class SiteMapGenerator {
 
         private Document fetchDocument(String url) {
             int attempts = 3;
-            int timeout = 20000; // 20 секунд
+            int timeout = 10000; //
 
             while (attempts > 0) {
                 try {
                     return Jsoup.connect(url).timeout(timeout).ignoreContentType(true).get();
                 } catch (HttpStatusException | UnsupportedMimeTypeException e) {
                     System.err.println("HTTP error or unsupported MIME type for URL: " + url);
-                    break; // Прерываем попытки при HTTP-ошибке или неподдерживаемом MIME-типе
+                    break;
                 } catch (IOException e) {
                     attempts--;
                     if (e instanceof java.net.UnknownHostException) {
                         System.err.println("Unknown host: " + e.getMessage());
-                        break; // Прерываем попытки при неизвестном хосте
+                        break;
                     }
                     if (attempts > 0) {
                         try {
-                            Thread.sleep(2000); // Пауза перед повторной попыткой
+                            Thread.sleep(100);
                         } catch (InterruptedException ie) {
                             Thread.currentThread().interrupt();
                         }
@@ -106,11 +106,11 @@ public class SiteMapGenerator {
                     }
                 }
             }
-            return null; // Возвращаем null, если не удалось получить документ
+            return null;
         }
     }
 
     private static boolean isValidUrl(String url) {
-        return url.startsWith("https://" + DOMAIN) && !url.contains("#");
+        return url.startsWith("https://" + DOMAIN) && !url.contains("#") && !url.contains("mailto:") && !url.contains("javascript:");
     }
 }
