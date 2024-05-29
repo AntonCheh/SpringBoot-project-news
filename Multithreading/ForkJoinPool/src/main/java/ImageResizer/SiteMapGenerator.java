@@ -5,13 +5,11 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.RecursiveTask;
-import java.util.stream.Collectors;
 
-import org.jsoup.Connection;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
+import org.jsoup.UnsupportedMimeTypeException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -57,7 +55,10 @@ public class SiteMapGenerator {
             result.append(indent).append(url).append("\n");
 
             try {
-                Document document = Jsoup.connect(url).get();
+                Document document = fetchDocument(url);
+                if (document == null) {
+                    return "";
+                }
                 Elements links = document.select("a[href]");
 
                 for (Element link : links) {
@@ -65,23 +66,47 @@ public class SiteMapGenerator {
                     if (isValidUrl(linkUrl) && !visitedUrls.contains(linkUrl)) {
                         LinkCrawler subTask = new LinkCrawler(linkUrl, depth + 1);
                         subTask.fork();
-                        String childResult = subTask.join();
-                        String childIndent = "\t".repeat(depth + 1);
-                        result.append(childIndent).append(childResult);
+                        result.append(subTask.join());
                     }
                 }
 
-                // Проверяем, если нет больше ссылок, то выходим из цикла
-                if (links.isEmpty()) {
-                    return "";
-                }
-
                 Thread.sleep((int) (100 + Math.random() * 50));
-            } catch (IOException | InterruptedException e) {
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 e.printStackTrace();
             }
 
             return result.toString();
+        }
+
+        private Document fetchDocument(String url) {
+            int attempts = 3;
+            int timeout = 20000; // 20 секунд
+
+            while (attempts > 0) {
+                try {
+                    return Jsoup.connect(url).timeout(timeout).ignoreContentType(true).get();
+                } catch (HttpStatusException | UnsupportedMimeTypeException e) {
+                    System.err.println("HTTP error or unsupported MIME type for URL: " + url);
+                    break; // Прерываем попытки при HTTP-ошибке или неподдерживаемом MIME-типе
+                } catch (IOException e) {
+                    attempts--;
+                    if (e instanceof java.net.UnknownHostException) {
+                        System.err.println("Unknown host: " + e.getMessage());
+                        break; // Прерываем попытки при неизвестном хосте
+                    }
+                    if (attempts > 0) {
+                        try {
+                            Thread.sleep(2000); // Пауза перед повторной попыткой
+                        } catch (InterruptedException ie) {
+                            Thread.currentThread().interrupt();
+                        }
+                    } else {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return null; // Возвращаем null, если не удалось получить документ
         }
     }
 
