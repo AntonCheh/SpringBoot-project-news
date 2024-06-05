@@ -29,6 +29,7 @@ public class NewsController {
 
     @GetMapping
     public ResponseEntity<List<News>> getAll() {
+
         return ResponseEntity.ok(newsService.getAll());
     }
 

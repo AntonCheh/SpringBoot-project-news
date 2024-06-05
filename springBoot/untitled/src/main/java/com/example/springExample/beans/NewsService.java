@@ -12,10 +12,12 @@ public class NewsService {
     private long currentId = 1;
 
     public News getById(Long id) {
+
         return newsStore.get(id);
     }
 
     public List<News> getAll() {
+
         return newsStore.values().stream().collect(Collectors.toList());
     }
 
