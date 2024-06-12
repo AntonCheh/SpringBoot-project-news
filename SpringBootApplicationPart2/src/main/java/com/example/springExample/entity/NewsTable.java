@@ -3,8 +3,10 @@ package com.example.springExample.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -13,7 +15,7 @@ import java.time.Instant;
 public class NewsTable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //для указания как будут генерироваться при вставке данных
     @Column(name = "id")
     private Long id;
 
@@ -23,8 +25,9 @@ public class NewsTable {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "date")
-    private Instant date;
+    @CreationTimestamp
+    @Column(name = "creation_date")
+    private LocalDateTime date;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

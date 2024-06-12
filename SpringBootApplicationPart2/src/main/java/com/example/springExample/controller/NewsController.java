@@ -36,7 +36,8 @@ public class NewsController {
 
     @PutMapping("/{id}")
     public void updateNews(@PathVariable Long id, @RequestBody News news) {
-         newsService.update(id, news);
+         news.setId(id);
+        newsService.update(news);
     }
 
     @DeleteMapping("/{id}")

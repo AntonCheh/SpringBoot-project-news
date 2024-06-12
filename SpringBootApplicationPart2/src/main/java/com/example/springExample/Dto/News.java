@@ -2,19 +2,21 @@ package com.example.springExample.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
-@AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 public class News {
     private long id;
     private String title;
     private String text;
-    private Instant date;
-    private Category category;
+    private LocalDateTime date;
+    private Long categoryId;
 }
 
 
