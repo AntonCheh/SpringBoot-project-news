@@ -12,12 +12,15 @@ public class CommentController {
 
     private final CommentCRUDService commentService;
 
+
     public CommentController(CommentCRUDService commentService) {
+
         this.commentService = commentService;
     }
 
     @GetMapping("/{id}")
     public CommentDto getCommentById(@PathVariable Integer id) {
+
         return commentService.getById(id);
     }
 
@@ -33,7 +36,8 @@ public class CommentController {
 
     @PutMapping("/{id}")
     public void updateComment(@PathVariable Integer id, @RequestBody CommentDto commentDto) {
-        commentService.update(id, commentDto);
+       commentDto.setId(id);
+        commentService.update(commentDto);
     }
 
     @DeleteMapping("/{id}")
