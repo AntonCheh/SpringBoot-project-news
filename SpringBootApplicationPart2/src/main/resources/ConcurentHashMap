@@ -1,0 +1,109 @@
+ConcurrentHashMap — это потокобезопасная версия HashMap из стандартной библиотеки Java. Она предназначена для использования в многопоточных средах, обеспечивая высокую производительность при конкурентном доступе к данным.
+
+Преимущества использования ConcurrentHashMap
+Потокобезопасность: ConcurrentHashMap позволяет безопасно работать с картой из нескольких потоков без необходимости явно синхронизировать доступ.
+Высокая производительность: ConcurrentHashMap использует механизм сегментации для повышения производительности. Это позволяет нескольким потокам параллельно читать и изменять карту.
+Отсутствие блокировок при чтении: Операции чтения в ConcurrentHashMap не требуют блокировок, что значительно увеличивает производительность по сравнению с традиционными блокировками на уровне карты.
+Пример использования ConcurrentHashMap
+Рассмотрим пример использования ConcurrentHashMap в контексте вашего веб-приложения.
+
+Создание и использование ConcurrentHashMap в сервисе
+java
+Копировать код
+// src/main/java/com/example/demo/NewsService.java
+package com.example.demo;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+
+@Service
+public class NewsService {
+    private final ConcurrentHashMap<Long, News> newsStore = new ConcurrentHashMap<>();
+    private long currentId = 1;
+
+    public News getById(Long id) {
+        return newsStore.get(id);
+    }
+
+    public List<News> getAll() {
+        return newsStore.values().stream().collect(Collectors.toList());
+    }
+
+    public News create(News news) {
+        news.setId(currentId++);
+        newsStore.put(news.getId(), news);
+        return news;
+    }
+
+    public News update(News news) {
+        newsStore.put(news.getId(), news);
+        return news;
+    }
+
+    public void deleteById(Long id) {
+        newsStore.remove(id);
+    }
+}
+Подробное объяснение
+Создание ConcurrentHashMap:
+
+java
+Копировать код
+private final ConcurrentHashMap<Long, News> newsStore = new ConcurrentHashMap<>();
+Здесь мы создаем экземпляр ConcurrentHashMap для хранения новостей. Ключом будет Long, представляющий идентификатор новости, а значением — объект News.
+
+Метод getById:
+
+java
+Копировать код
+public News getById(Long id) {
+    return newsStore.get(id);
+}
+Этот метод получает новость по ее идентификатору, используя метод get из ConcurrentHashMap.
+
+Метод getAll:
+
+java
+Копировать код
+public List<News> getAll() {
+    return newsStore.values().stream().collect(Collectors.toList());
+}
+Этот метод возвращает список всех новостей, преобразуя коллекцию значений карты в список.
+
+Метод create:
+
+java
+Копировать код
+public News create(News news) {
+    news.setId(currentId++);
+    newsStore.put(news.getId(), news);
+    return news;
+}
+Этот метод создает новую новость, генерируя для нее уникальный идентификатор, добавляет ее в ConcurrentHashMap и возвращает созданную новость.
+
+Метод update:
+
+java
+Копировать код
+public News update(News news) {
+    newsStore.put(news.getId(), news);
+    return news;
+}
+Этот метод обновляет существующую новость в ConcurrentHashMap и возвращает обновленную новость.
+
+Метод deleteById:
+
+java
+Копировать код
+public void deleteById(Long id) {
+    newsStore.remove(id);
+}
+Этот метод удаляет новость по ее идентификатору, используя метод remove из ConcurrentHashMap.
+
+Документация по ConcurrentHashMap
+ConcurrentHashMap находится в пакете java.util.concurrent и является частью стандартной библиотеки Java.
+
+Документация на официальном сайте Oracle: ConcurrentHashMap.
