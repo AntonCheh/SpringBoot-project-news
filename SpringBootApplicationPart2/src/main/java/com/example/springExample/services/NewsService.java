@@ -68,7 +68,8 @@ private final CategoryRepository categoryRepository;
         news.setId(newsTable.getId());
         news.setText(newsTable.getText());
         news.setTitle(newsTable.getTitle());
-        news.setCategoryId(CategoryService.mapToDto(newsTable.getCategory()).getId());
+        news.setDate(newsTable.getDate());
+        news.setCategoryId(newsTable.getCategory().getId());
         return news;
     }
 
