@@ -8,5 +8,5 @@ import java.util.List;
 public class Category {
     private Long id;
     private String title;
-    private List<News> comments;
+    private List<News> news;
 }

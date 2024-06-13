@@ -1,16 +1,13 @@
 package com.example.springExample.Dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 
+@Data
 @NoArgsConstructor
-@Setter
-@Getter
+@AllArgsConstructor
 public class News {
     private long id;
     private String title;

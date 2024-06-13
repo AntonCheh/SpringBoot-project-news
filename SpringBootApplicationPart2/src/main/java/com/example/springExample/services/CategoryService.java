@@ -1,18 +1,14 @@
 package com.example.springExample.services;
 
 import com.example.springExample.Dto.Category;
-import com.example.springExample.Dto.News;
 import com.example.springExample.entity.CategoryTable;
-import com.example.springExample.entity.NewsTable;
 import com.example.springExample.repository.CategoryRepository;
-import com.example.springExample.repository.NewsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -24,13 +20,14 @@ public class CategoryService implements CRUDservice<Category> {
     @Override
     public Category getById(Long id) {
         log.info("Get by ID: " + id);
-        CategoryTable table = repository.findById(id).orElseThrow();
+        CategoryTable table = repository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Category not found with id: " + id));
         return mapToDto(table);
     }
 
     @Override
     public Collection<Category> getAll() {
-        log.info("Get all");
+        log.info("Get all categories");
         return repository.findAll()
                 .stream()
                 .map(CategoryService::mapToDto)
@@ -39,42 +36,45 @@ public class CategoryService implements CRUDservice<Category> {
 
     @Override
     public void create(Category category) {
-        log.info("create");
+        log.info("Create category");
         CategoryTable table = mapToEntity(category);
         repository.save(table);
     }
 
     @Override
     public void update(Category category) {
-        log.info("Update ");
+        log.info("Update category");
         CategoryTable table = mapToEntity(category);
         repository.save(table);
     }
 
-
     @Override
     public void delete(Long id) {
-        System.out.println("delete " + id);
+        log.info("Delete category with id: " + id);
         repository.deleteById(id);
     }
 
-    public static Category mapToDto (CategoryTable categoryTable) {
+    public static Category mapToDto(CategoryTable categoryTable) {
         Category category = new Category();
         category.setId(categoryTable.getId());
         category.setTitle(categoryTable.getTitle());
-        category.setComments(categoryTable.getNews()
+        category.setNews(categoryTable.getNews()
                 .stream()
                 .map(NewsService::mapToDto).toList());
         return category;
     }
 
-    public static CategoryTable mapToEntity (Category category) {
+    public static CategoryTable mapToEntity(Category category) {
         CategoryTable categoryTable = new CategoryTable();
         categoryTable.setId(category.getId());
         categoryTable.setTitle(category.getTitle());
-        categoryTable.setNews(category.getComments()
-                .stream()
-                .map(NewsService::mapToEntity).toList());
+        // Проверяем, что comments не null перед маппингом
+        if (category.getNews() != null) {
+            categoryTable.setNews(category.getNews()
+                    .stream()
+                    .map(NewsService::mapToEntity)
+                    .toList());
+        }
         return categoryTable;
     }
 }
