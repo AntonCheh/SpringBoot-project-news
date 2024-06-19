@@ -1,41 +1,60 @@
-import java.io.FileOutputStream;
+import java.io.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Loader {
+
+    private static final char[] LETTERS = {'У', 'К', 'Е', 'Н', 'Х', 'В', 'А', 'Р', 'О', 'С', 'М', 'Т'};
+    private static final int REGION_CODE = 199;
+    private static final int THREAD_COUNT = 4; // Количество потоков для выполнения задачи
 
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
 
-        FileOutputStream writer = new FileOutputStream("res/numbers.txt");
+        ExecutorService executor = Executors.newFixedThreadPool(THREAD_COUNT);
 
-        char letters[] = {'У', 'К', 'Е', 'Н', 'Х', 'В', 'А', 'Р', 'О', 'С', 'М', 'Т'};
-        for (int number = 1; number < 1000; number++) {
-            int regionCode = 199;
-            for (char firstLetter : letters) {
-                for (char secondLetter : letters) {
-                    for (char thirdLetter : letters) {
-                        String carNumber = firstLetter + padNumber(number, 3) +
-                            secondLetter + thirdLetter + padNumber(regionCode, 2);
-                        writer.write(carNumber.getBytes());
-                        writer.write('\n');
-                    }
+        for (int i = 0; i < THREAD_COUNT; i++) {
+            final int threadIndex = i;
+            executor.submit(() -> {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter("res/numbers_" + threadIndex + ".txt"))) {
+                    generateNumbers(writer, threadIndex);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            }
+            });
         }
 
-        writer.flush();
-        writer.close();
+        executor.shutdown();
+        executor.awaitTermination(1, TimeUnit.HOURS); // Ожидание завершения всех задач
 
         System.out.println((System.currentTimeMillis() - start) + " ms");
     }
 
-    private static String padNumber(int number, int numberLength) {
-        String numberStr = Integer.toString(number);
-        int padSize = numberLength - numberStr.length();
-
-        for (int i = 0; i < padSize; i++) {
-            numberStr = '0' + numberStr;
+    private static void generateNumbers(BufferedWriter writer, int threadIndex) throws IOException {
+        for (int number = 1; number < 1000; number++) {
+            char firstLetter = LETTERS[threadIndex];
+            for (char secondLetter : LETTERS) {
+                for (char thirdLetter : LETTERS) {
+                    String carNumber = firstLetter + padNumber(number, 3) + secondLetter + thirdLetter + padNumber(REGION_CODE, 2);
+                    writer.write(carNumber);
+                    writer.newLine();
+                }
+            }
         }
-
-        return numberStr;
+    }
+    private static String padNumber(int number, int numberLength) {
+        StringBuffer paddedNumber = new StringBuffer(Integer.toString(number));
+        while (paddedNumber.length() < numberLength) {
+            paddedNumber.insert(0, '0');
+        }
+        return paddedNumber.toString();
     }
 }
+
+
+
+/*
+ Использование BufferedWriter вместо FileOutputStream для увеличения производительности.
+
+ */
