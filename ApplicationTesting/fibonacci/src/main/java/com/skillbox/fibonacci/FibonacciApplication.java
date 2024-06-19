@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FibonacciApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(FibonacciApplication.class, args);
 	}
 

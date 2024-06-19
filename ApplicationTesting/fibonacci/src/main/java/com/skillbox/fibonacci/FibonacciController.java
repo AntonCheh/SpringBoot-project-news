@@ -23,5 +23,4 @@ public class FibonacciController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
 }
