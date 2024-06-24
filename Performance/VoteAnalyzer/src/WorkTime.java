@@ -9,29 +9,29 @@ public class WorkTime {
      * Set of TimePeriod objects
      */
     public WorkTime() {
+
         periods = new TreeSet<>();
     }
 
     public void addVisitTime(long visitTime) {
-        Date visit = new Date(visitTime);
-        TimePeriod newPeriod = new TimePeriod(visit, visit);
-        for (TimePeriod period : periods) {
-            if (period.compareTo(newPeriod) == 0) {
-                period.appendTime(visit);
-                return;
-            }
+        TimePeriod newPeriod = new TimePeriod(visitTime, visitTime);
+        TimePeriod existingPeriod = periods.floor(newPeriod);
+
+        if (existingPeriod != null && existingPeriod.compareTo(newPeriod) == 0) {
+            existingPeriod.appendTime(new Date(visitTime));
+        } else {
+            periods.add(newPeriod);
         }
-        periods.add(new TimePeriod(visit, visit));
     }
 
     public String toString() {
-        String line = "";
+        StringBuilder sb = new StringBuilder();
         for (TimePeriod period : periods) {
-            if (!line.isEmpty()) {
-                line += ", ";
+            if (sb.length() > 0) {
+                sb.append(", ");
             }
-            line += period;
+            sb.append(period);
         }
-        return line;
+        return sb.toString();
     }
 }

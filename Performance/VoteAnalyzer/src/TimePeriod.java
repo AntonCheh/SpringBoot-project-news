@@ -1,11 +1,15 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class TimePeriod implements Comparable<TimePeriod> {
 
     private long from;
     private long to;
+    private LocalDate date; // Сохраняем дату отдельно для быстрого сравнения
 
     /**
      * Time period within one day
@@ -14,29 +18,24 @@ public class TimePeriod implements Comparable<TimePeriod> {
      * @param to
      */
     public TimePeriod(long from, long to) {
-        this.from = from;
-        this.to = to;
-        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy.MM.dd");
-        if (!dayFormat.format(new Date(from)).equals(dayFormat.format(new Date(to)))) {
-            throw new IllegalArgumentException("Dates 'from' and 'to' must be within ONE day!");
-        }
+        this(new Date(from), new Date(to));
     }
 
     public TimePeriod(Date from, Date to) {
         this.from = from.getTime();
         this.to = to.getTime();
-        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy.MM.dd");
-        if (!dayFormat.format(from).equals(dayFormat.format(to))) {
+        LocalDate fromDate = from.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate toDate = to.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if (!fromDate.equals(toDate)) {
             throw new IllegalArgumentException("Dates 'from' and 'to' must be within ONE day!");
         }
+        this.date = fromDate; // Инициализируем поле date
     }
 
     public void appendTime(Date visitTime) {
-        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy.MM.dd");
-        if (!dayFormat.format(new Date(from))
-            .equals(dayFormat.format(new Date(visitTime.getTime())))) {
-            throw new IllegalArgumentException(
-                "Visit time must be within the same day as the current TimePeriod!");
+        LocalDate visitDate = visitTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if (!this.date.equals(visitDate)) {
+            throw new IllegalArgumentException("Visit time must be within the same day as the current TimePeriod!");
         }
         long visitTimeTs = visitTime.getTime();
         if (visitTimeTs < from) {
@@ -52,20 +51,17 @@ public class TimePeriod implements Comparable<TimePeriod> {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
         String from = dateFormat.format(this.from);
         String to = timeFormat.format(this.to);
-        return from + "-" + to;
+        StringBuilder sb = new StringBuilder();
+        sb.append(from).append("-").append(to);
+        return sb.toString();
     }
 
     @Override
     public int compareTo(TimePeriod period) {
-        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy.MM.dd");
-        Date current = new Date();
-        Date compared = new Date();
-        try {
-            current = dayFormat.parse(dayFormat.format(new Date(from)));
-            compared = dayFormat.parse(dayFormat.format(new Date(period.from)));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return current.compareTo(compared);
+        return Long.compare(this.from, period.from);
     }
 }
+
+
+
+

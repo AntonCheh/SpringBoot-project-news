@@ -1,85 +1,83 @@
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
 public class Loader {
 
     private static SimpleDateFormat birthDayFormat = new SimpleDateFormat("yyyy.MM.dd");
     private static SimpleDateFormat visitDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 
-    private static HashMap<Integer, WorkTime> voteStationWorkTimes = new HashMap<>();
-    private static HashMap<Voter, Integer> voterCounts = new HashMap<>();
+    private static DBConnection dbConnection;
 
-    public static void main(String[] args) throws Exception {
-        String fileName = "res/data-1M.xml";
+    public static void main(String[] args) {
+        String fileName = "C:/Users/User/IdeaProjects/java_basics/Performance/VoteAnalyzer/res/data-1M.xml";
+        dbConnection = new DBConnection();
 
-        parseFile(fileName);
-
-        //Printing results
-        System.out.println("Voting station work times: ");
-        for (Integer votingStation : voteStationWorkTimes.keySet()) {
-            WorkTime workTime = voteStationWorkTimes.get(votingStation);
-            System.out.println("\t" + votingStation + " - " + workTime);
+        // Ensure the connection is established before proceeding
+        if (DBConnection.getConnection() == null) {
+            System.err.println("Failed to establish database connection!");
+            return;
         }
 
-        System.out.println("Duplicated voters: ");
-        for (Voter voter : voterCounts.keySet()) {
-            Integer count = voterCounts.get(voter);
-            if (count > 1) {
-                System.out.println("\t" + voter + " - " + count);
-            }
+        try {
+            parseFile(fileName);
+            dbConnection.printVoterCounts();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private static void parseFile(String fileName) throws Exception {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.parse(new File(fileName));
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser saxParser = factory.newSAXParser();
 
-        findEqualVoters(doc);
-        fixWorkTimes(doc);
-    }
+        DefaultHandler handler = new DefaultHandler() {
+            private StringBuilder currentData;
+            private Voter currentVoter;
 
-    private static void findEqualVoters(Document doc) throws Exception {
-        NodeList voters = doc.getElementsByTagName("voter");
-        int votersCount = voters.getLength();
-        for (int i = 0; i < votersCount; i++) {
-            Node node = voters.item(i);
-            NamedNodeMap attributes = node.getAttributes();
-
-            String name = attributes.getNamedItem("name").getNodeValue();
-            Date birthDay = birthDayFormat
-                .parse(attributes.getNamedItem("birthDay").getNodeValue());
-
-            Voter voter = new Voter(name, birthDay);
-            Integer count = voterCounts.get(voter);
-            voterCounts.put(voter, count == null ? 1 : count + 1);
-        }
-    }
-
-    private static void fixWorkTimes(Document doc) throws Exception {
-        NodeList visits = doc.getElementsByTagName("visit");
-        int visitCount = visits.getLength();
-        for (int i = 0; i < visitCount; i++) {
-            Node node = visits.item(i);
-            NamedNodeMap attributes = node.getAttributes();
-
-            Integer station = Integer.parseInt(attributes.getNamedItem("station").getNodeValue());
-            Date time = visitDateFormat.parse(attributes.getNamedItem("time").getNodeValue());
-            WorkTime workTime = voteStationWorkTimes.get(station);
-            if (workTime == null) {
-                workTime = new WorkTime();
-                voteStationWorkTimes.put(station, workTime);
+            @Override
+            public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+                currentData = new StringBuilder();
+                if (qName.equals("voter")) {
+                    String name = attributes.getValue("name");
+                    String birthDayStr = attributes.getValue("birthDay");
+                    Date birthDay = null;
+                    try {
+                        birthDay = birthDayFormat.parse(birthDayStr);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    currentVoter = new Voter(name, birthDay);
+                } else if (qName.equals("visit")) {
+                    String stationStr = attributes.getValue("station");
+                    Integer station = Integer.parseInt(stationStr);
+                    String timeStr = attributes.getValue("time");
+                    try {
+                        Date time = visitDateFormat.parse(timeStr);
+                        dbConnection.countVoter(currentVoter.getName(), birthDayFormat.format(currentVoter.getBirthDay()));
+                        dbConnection.addVisitTime(station, time.getTime());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-            workTime.addVisitTime(time.getTime());
-        }
+
+            @Override
+            public void characters(char[] ch, int start, int length) throws SAXException {
+                if (currentData != null) {
+                    currentData.append(new String(ch, start, length));
+                }
+            }
+        };
+
+        saxParser.parse(new File(fileName), handler);
     }
 }
